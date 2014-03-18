@@ -11,14 +11,16 @@ $this->headTitle($title);
 
 <table class="table">
     <tr>
-        <th>brn</th>
+        <th>Item Number</th>
         <th>name</th>
+        <th>description</th>
         <th>&nbsp;</th>
     </tr>
     <?php foreach ($items as $item) : ?>
         <tr>
             <td><?php echo $this->escapeHtml($item->item_no);?></td>
             <td><?php echo $this->escapeHtml($item->name);?></td>
+            <td><?php echo $this->escapeHtml($item->description);?></td>
             <td>
                 <a href="<?php echo $this->url('item',
                     array('action'=>'edit', 'id' => $item->item_no));?>">Edit</a>
