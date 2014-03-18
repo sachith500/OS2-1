@@ -5,6 +5,7 @@ return array(
             'Album\Controller\Album' => 'Album\Controller\AlbumController',
             'Album\Controller\Business' => 'Album\Controller\BusinessController',
             'Album\Controller\Customer' => 'Album\Controller\CustomerController',
+            'Album\Controller\Item' => 'Album\Controller\ItemController',
         ),
     ),
 
@@ -55,6 +56,21 @@ return array(
                     ),
                 ),
             ),
+
+            'item' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/item[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Item',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
 
@@ -64,6 +80,7 @@ return array(
             'album' => __DIR__ . '/../view',
             'business' => __DIR__ . '/../view',
             'customer' => __DIR__ . '/../view',
+            'item' => __DIR__ . '/../view',
         ),
     ),
 );

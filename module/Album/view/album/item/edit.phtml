@@ -1,0 +1,25 @@
+<?php
+// module/Album/view/album/album/edit.phtml:
+
+$title = 'Edit business';
+$this->headTitle($title);
+?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'business',
+    array(
+        'action' => 'edit',
+        'id'     => $this->brn,
+    )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('item_no'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('description'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
