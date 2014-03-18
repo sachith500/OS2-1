@@ -6,6 +6,8 @@ use Album\Model\Business;
 use Album\Model\BusinessTable;
 use Album\Model\Customer;
 use Album\Model\CustomerTable;
+use Album\Model\Item;
+use Album\Model\ItemTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -66,6 +68,17 @@ class Module
                         $resultSetPrototype = new ResultSet();
                         $resultSetPrototype->setArrayObjectPrototype(new Customer());
                         return new TableGateway('customers', $dbAdapter, null, $resultSetPrototype);
+                    },
+                'Album\Model\ItemTable' =>  function($sm) {
+                        $tableGateway = $sm->get('ItemTableGateway');
+                        $table = new ItemTable($tableGateway);
+                        return $table;
+                    },
+                'ItemTableGateway' => function ($sm) {
+                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                        $resultSetPrototype = new ResultSet();
+                        $resultSetPrototype->setArrayObjectPrototype(new Item());
+                        return new TableGateway('items', $dbAdapter, null, $resultSetPrototype);
                     },
             ),
         );
