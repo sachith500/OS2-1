@@ -4,6 +4,7 @@ return array(
         'invokables' => array(
             'Album\Controller\Album' => 'Album\Controller\AlbumController',
             'Album\Controller\Business' => 'Album\Controller\BusinessController',
+            'Album\Controller\Customer' => 'Album\Controller\CustomerController',
         ),
     ),
 
@@ -39,6 +40,21 @@ return array(
                     ),
                 ),
             ),
+
+            'customer' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/customer[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Customer',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
 
@@ -47,6 +63,7 @@ return array(
         'template_path_stack' => array(
             'album' => __DIR__ . '/../view',
             'business' => __DIR__ . '/../view',
+            'customer' => __DIR__ . '/../view',
         ),
     ),
 );
