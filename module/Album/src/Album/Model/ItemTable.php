@@ -34,6 +34,7 @@ class ItemTable
         $data = array(
             'item_no' => $item->item_no,
             'name'  => $item->name,
+            'description' => $item->description,
         );
 
         $id = (int)$item->item_no;
