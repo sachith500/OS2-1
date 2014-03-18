@@ -1,7 +1,7 @@
 <?php
 // module/Album/view/album/album/index.phtml:
 
-$title = 'One Stop Shop';
+$title = 'Home';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -80,6 +80,27 @@ $this->headTitle($title);
                     </li>
                     <li class="active"><a
                             href="<?php echo $this->url('item',array('action'=>'add')) ?>"><?php echo $this->translate('Add Item') ?></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#chart">
+                    Charts
+                </a>
+            </h4>
+        </div>
+        <div id="chart" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('chart') ?>"><?php echo $this->translate('Show Orders Distribution') ?></a>
                     </li>
 
                 </ul>
