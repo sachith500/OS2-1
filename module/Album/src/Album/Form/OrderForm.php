@@ -3,43 +3,31 @@ namespace Album\Form;
 
 use Zend\Form\Form;
 
-class ItemForm extends Form
+class OrderForm extends Form
 {
     public function __construct($name = null)
     {
         // we want to ignore the name passed
-        parent::__construct('item');
+        parent::__construct('order');
         $this->setAttribute('method', 'post');
         $this->add(array(
-            'name' => 'item_no',
+            'name' => 'order_no',
             'attributes' => array(
                 'type'  => 'text',
             ),
             'options' => array(
-                'label' => 'Item No',
+                'label' => 'Order Number',
             ),
         ));
-
         $this->add(array(
-            'name' => 'name',
+            'name' => 'date',
             'attributes' => array(
-                'type'  => 'text',
+                'type'  => 'date',
             ),
             'options' => array(
-                'label' => 'Name',
+                'label' => 'Date',
             ),
         ));
-
-        $this->add(array(
-            'name' => 'description',
-            'attributes' => array(
-                'type'  => 'textarea',
-            ),
-            'options' => array(
-                'label' => 'Description',
-            ),
-        ));
-
         $this->add(array(
             'name' => 'submit',
             'attributes' => array(

@@ -6,6 +6,7 @@ return array(
             'Album\Controller\Business' => 'Album\Controller\BusinessController',
             'Album\Controller\Customer' => 'Album\Controller\CustomerController',
             'Album\Controller\Item' => 'Album\Controller\ItemController',
+            'Album\Controller\Order' => 'Album\Controller\OrderController',
         ),
     ),
 
@@ -71,6 +72,21 @@ return array(
                     ),
                 ),
             ),
+
+            'order' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/order[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Order',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
 
@@ -81,6 +97,7 @@ return array(
             'business' => __DIR__ . '/../view',
             'customer' => __DIR__ . '/../view',
             'item' => __DIR__ . '/../view',
+            'order' => __DIR__ . '/../view',
         ),
     ),
 );

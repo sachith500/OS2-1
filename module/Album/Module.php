@@ -8,6 +8,8 @@ use Album\Model\Customer;
 use Album\Model\CustomerTable;
 use Album\Model\Item;
 use Album\Model\ItemTable;
+use Album\Model\Order;
+use Album\Model\OrderTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -79,6 +81,17 @@ class Module
                         $resultSetPrototype = new ResultSet();
                         $resultSetPrototype->setArrayObjectPrototype(new Item());
                         return new TableGateway('items', $dbAdapter, null, $resultSetPrototype);
+                    },
+                'Album\Model\OrderTable' =>  function($sm) {
+                        $tableGateway = $sm->get('OrderTableGateway');
+                        $table = new OrderTable($tableGateway);
+                        return $table;
+                    },
+                'OrderTableGateway' => function ($sm) {
+                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                        $resultSetPrototype = new ResultSet();
+                        $resultSetPrototype->setArrayObjectPrototype(new Order());
+                        return new TableGateway('orders', $dbAdapter, null, $resultSetPrototype);
                     },
             ),
         );
