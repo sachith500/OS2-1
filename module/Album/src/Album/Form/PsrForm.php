@@ -15,6 +15,9 @@ class PsrForm extends Form
             'attributes' => array(
                 'type'  => 'text',
             ),
+            'options' => array(
+                'label' => 'Employer ID',
+            ),
         ));
         $this->add(array(
             'name' => 'name',

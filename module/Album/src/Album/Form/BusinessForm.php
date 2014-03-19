@@ -15,6 +15,9 @@ class BusinessForm extends Form
             'attributes' => array(
                 'type'  => 'text',
             ),
+            'options' => array(
+                'label' => 'Business Registration No',
+            ),
         ));
         $this->add(array(
             'name' => 'name',
