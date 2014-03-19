@@ -18,7 +18,12 @@ $url = $this->url('business', array(
 ?>
 <form action="<?php echo $url; ?>" method="post">
     <div>
-        <input type="submit" name="del" value="Yes" />
-        <input type="submit" name="del" value="No" />
+        <table class="table table-striped ">
+            <tr>
+                <input class="alert-success" type="submit" name="del" value="Yes" />
+        &nbsp;
+                <input class="alert-danger" type="submit" name="del" value="No" />
+        &nbsp;
+            </tr>
     </div>
 </form>

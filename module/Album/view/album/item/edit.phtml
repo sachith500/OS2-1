@@ -12,13 +12,14 @@ $form->setAttribute('action', $this->url(
     'item',
     array(
         'action' => 'edit',
-        'id'     => $this->brn,
+        'id'     => $this->item_no,
     )
 ));
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formRow($form->get('item_no'));
+echo $this->formHidden($form->get('item_no'));
+echo 'item_no ' , $this->item_no , ' ';
 echo $this->formRow($form->get('name'));
 echo $this->formRow($form->get('description'));
 echo $this->formSubmit($form->get('submit'));
