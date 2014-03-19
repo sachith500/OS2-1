@@ -10,8 +10,16 @@ namespace Album\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 
-class ChartController extends AbstractActionController{
-    public function indexAction(){
+class ChartController extends AbstractActionController
+{
+    public function indexAction()
+    {
+
+
+    }
+
+    public function orderDistAction()
+    {
         $type = "PieChart";
         $data = array(
             array('type' => 'Mail Order', 'amount' => 2),
@@ -20,9 +28,23 @@ class ChartController extends AbstractActionController{
         );
 
         return array(
-            'type'=>$type,
-            'data'=>$data,
+            'type' => $type,
+            'data' => $data,
         );
+    }
+
+    public function customerDistAction()
+    {
+
+    }
+
+    public function priceVariationAction()
+    {
+
+    }
+
+    public function orderTimelineAction()
+    {
 
     }
 }
