@@ -1,0 +1,32 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Registered Items';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('item', array('action'=>'add'));?>"><input class="btn btn-primary" value="Add New Item"></a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Item Number</th>
+        <th>name</th>
+        <th>description</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($items as $item) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($item->item_no);?></td>
+            <td><?php echo $this->escapeHtml($item->name);?></td>
+            <td><?php echo $this->escapeHtml($item->description);?></td>
+            <td>
+                <a href="<?php echo $this->url('item',
+                    array('action'=>'edit', 'id' => $item->item_no));?>">Edit</a>
+                <a href="<?php echo $this->url('item',
+                    array('action'=>'delete', 'id' => $item->item_no));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

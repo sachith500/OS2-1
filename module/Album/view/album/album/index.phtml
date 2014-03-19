@@ -1,30 +1,109 @@
 <?php
 // module/Album/view/album/album/index.phtml:
 
-$title = 'My albums';
+$title = 'Home';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
-<p>
-    <a href="<?php echo $this->url('album', array('action'=>'add'));?>">Add new album</a>
-</p>
 
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Artist</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($albums as $album) : ?>
-        <tr>
-            <td><?php echo $this->escapeHtml($album->title);?></td>
-            <td><?php echo $this->escapeHtml($album->artist);?></td>
-            <td>
-                <a href="<?php echo $this->url('album',
-                    array('action'=>'edit', 'id' => $album->id));?>">Edit</a>
-                <a href="<?php echo $this->url('album',
-                    array('action'=>'delete', 'id' => $album->id));?>">Delete</a>
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>
+<ul class="nav collapse">
+    <li class="active"><a href="<?php echo $this->url('business') ?>"><?php echo $this->translate('Business') ?></a>
+    </li>
+    <li class="active"><a href="<?php echo $this->url('customer') ?>"><?php echo $this->translate('Customer') ?></a>
+    </li>
+    <li class="active"><a href="<?php echo $this->url('item') ?>"><?php echo $this->translate('Item') ?></a></li>
+
+</ul>
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#business">
+                    Businesses
+                </a>
+            </h4>
+        </div>
+        <div id="business" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+                    <li class="active"><a
+                            href="<?php echo $this->url('business') ?>"><?php echo $this->translate('Show Business') ?></a>
+                    </li>
+                    <li class="active"><a
+                            href="<?php echo $this->url('business',array('action'=>'add')) ?>"><?php echo $this->translate('Add Business') ?></a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#customer">
+                    Customers
+                </a>
+            </h4>
+        </div>
+        <div id="customer" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('customer') ?>"><?php echo $this->translate('Show Customer') ?></a>
+                    </li>
+                    <li class="active"><a
+                            href="<?php echo $this->url('customer',array('action'=>'add')) ?>"><?php echo $this->translate('Add Customer') ?></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#item">
+                    Items
+                </a>
+            </h4>
+        </div>
+        <div id="item" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('item') ?>"><?php echo $this->translate('Show Item') ?></a>
+                    </li>
+                    <li class="active"><a
+                            href="<?php echo $this->url('item',array('action'=>'add')) ?>"><?php echo $this->translate('Add Item') ?></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#chart">
+                    Charts
+                </a>
+            </h4>
+        </div>
+        <div id="chart" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('chart') ?>"><?php echo $this->translate('Show Orders Distribution') ?></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>

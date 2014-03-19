@@ -1,0 +1,30 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Registered Orders';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('order', array('action'=>'add'));?>">Add new orders</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>order_no</th>
+        <th>date</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($orders as $order) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($order->order_no);?></td>
+            <td><?php echo $this->escapeHtml($order->date);?></td>
+            <td>
+                <a href="<?php echo $this->url('order',
+                    array('action'=>'edit', 'id' => $order->order_no));?>">Edit</a>
+                <a href="<?php echo $this->url('order',
+                    array('action'=>'delete', 'id' => $order->order_no));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

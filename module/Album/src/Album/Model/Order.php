@@ -4,18 +4,16 @@ use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
-class Album implements InputFilterAwareInterface
+class Order
 {
-    public $id;
-    public $artist;
-    public $title;
+    public $order_no;
+    public $date;
     protected $inputFilter;
 
     public function exchangeArray($data)
     {
-        $this->id     = (isset($data['id'])) ? $data['id'] : null;
-        $this->artist = (isset($data['artist'])) ? $data['artist'] : null;
-        $this->title  = (isset($data['title'])) ? $data['title'] : null;
+        $this->order_no = (isset($data['order_no'])) ? $data['order_no'] : null;
+        $this->date = (isset($data['date'])) ? $data['date'] : null;
     }
 
     public function getArrayCopy()
@@ -35,16 +33,9 @@ class Album implements InputFilterAwareInterface
             $factory     = new InputFactory();
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'id',
+                'name'     => 'order_no',
                 'required' => true,
-                'filters'  => array(
-                    array('name' => 'Int'),
-                ),
-            )));
 
-            $inputFilter->add($factory->createInput(array(
-                'name'     => 'artist',
-                'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
                     array('name' => 'StringTrim'),
@@ -62,7 +53,7 @@ class Album implements InputFilterAwareInterface
             )));
 
             $inputFilter->add($factory->createInput(array(
-                'name'     => 'title',
+                'name'     => 'date',
                 'required' => true,
                 'filters'  => array(
                     array('name' => 'StripTags'),
@@ -85,4 +76,5 @@ class Album implements InputFilterAwareInterface
 
         return $this->inputFilter;
     }
+
 }
