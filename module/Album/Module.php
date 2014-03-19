@@ -10,6 +10,8 @@ use Album\Model\Item;
 use Album\Model\ItemTable;
 use Album\Model\Order;
 use Album\Model\OrderTable;
+use Album\Model\Psr;
+use Album\Model\PsrTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -92,6 +94,17 @@ class Module
                         $resultSetPrototype = new ResultSet();
                         $resultSetPrototype->setArrayObjectPrototype(new Order());
                         return new TableGateway('orders', $dbAdapter, null, $resultSetPrototype);
+                    },
+                'Album\Model\PsrTable' =>  function($sm) {
+                        $tableGateway = $sm->get('PsrTableGateway');
+                        $table = new PsrTable($tableGateway);
+                        return $table;
+                    },
+                'PsrTableGateway' => function ($sm) {
+                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                        $resultSetPrototype = new ResultSet();
+                        $resultSetPrototype->setArrayObjectPrototype(new Psr());
+                        return new TableGateway('psrs', $dbAdapter, null, $resultSetPrototype);
                     },
             ),
         );

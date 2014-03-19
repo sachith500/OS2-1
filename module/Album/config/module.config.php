@@ -8,6 +8,8 @@ return array(
             'Album\Controller\Item' => 'Album\Controller\ItemController',
             'Album\Controller\Order' => 'Album\Controller\OrderController',
             'Album\Controller\Chart'=>'Album\Controller\ChartController',
+            'Album\Controller\Psr'=>'Album\Controller\PsrController',
+
         ),
     ),
 
@@ -103,6 +105,21 @@ return array(
                     ),
                 ),
             ),
+
+            'psr' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/psr[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Psr',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
 
@@ -114,6 +131,7 @@ return array(
             'customer' => __DIR__ . '/../view',
             'item' => __DIR__ . '/../view',
             'order' => __DIR__ . '/../view',
+            'psr' => __DIR__ . '/../view',
         ),
     ),
 );
