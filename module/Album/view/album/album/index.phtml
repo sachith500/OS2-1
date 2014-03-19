@@ -111,3 +111,28 @@ $this->headTitle($title);
             </div>
         </div>
     </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#order">
+                    Orders
+                </a>
+            </h4>
+        </div>
+        <div id="order" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul class="nav">
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('order') ?>"><?php echo $this->translate('Show Orders') ?></a>
+                    </li>
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('order',array('action'=>'add')) ?>"><?php echo $this->translate('Create New Order') ?></a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
