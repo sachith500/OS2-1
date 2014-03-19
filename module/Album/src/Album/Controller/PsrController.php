@@ -48,7 +48,7 @@ class PsrController extends AbstractActionController
     public function editAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        echo $id;
+        //echo $id;
 
         if (!$id) {
             echo 'ID';
@@ -59,7 +59,7 @@ class PsrController extends AbstractActionController
 
         $psr = $this->getPsrTable()->getPsr($id);
 
-        echo 'asdas';
+        //echo 'asdas';
         $form  = new PsrForm();
         $form->bind($psr);
 
@@ -86,7 +86,7 @@ class PsrController extends AbstractActionController
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        echo $id;
+        //echo $id;
         if (!$id) {
             //return $this->redirect()->toRoute('business');
         }
@@ -95,11 +95,11 @@ class PsrController extends AbstractActionController
 
         $request = $this->getRequest();
         if ($request->isPost()) {
-            echo 'isPOST';
+            //echo 'isPOST';
             $del = $request->getPost('del', 'No');
             if ($del == 'Yes') {
                 //$id = (int) $request->getPost('id');
-                echo $id;
+                //echo $id;
                 $this->getPsrTable()->deletePsr($id);
             }
 

@@ -8,11 +8,16 @@ $this->headTitle($title);
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('item', array('action' => 'add')));
-$form->prepare();
+$form->prepare();?>
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('item_no'));
-echo $this->formRow($form->get('name'));
-echo $this->formRow($form->get('description'));
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<table class="table table-striped">
+
+    <?php echo $this->form()->openTag($form);?>
+    <tr><td><?php echo $this->formRow($form->get('item_no'));?></td><td></td></tr>
+    <tr><td><?php echo $this->formRow($form->get('name'));?></td>
+    <tr><td><?php echo $this->formRow($form->get('description'));?></td>
+    <td><?php echo $this->formSubmit($form->get('submit'));?></td></tr>
+    <?php echo $this->form()->closeTag();?>
+
+
+</table>

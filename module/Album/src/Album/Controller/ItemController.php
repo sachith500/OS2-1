@@ -48,7 +48,7 @@ class ItemController extends AbstractActionController
     public function editAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        echo $id;
+        //echo $id;
 
         if (!$id) {
             echo '!ID';
@@ -84,7 +84,7 @@ class ItemController extends AbstractActionController
     public function deleteAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        echo $id;
+        //echo $id;
         if (!$id) {
             //return $this->redirect()->toRoute('business');
         }
