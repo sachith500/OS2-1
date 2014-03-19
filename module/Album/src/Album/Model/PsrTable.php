@@ -3,6 +3,11 @@ namespace Album\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Validator\Db\RecordExists;
+use Zend\Db\TableGateway\AbstractTableGateway;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Sql;
+use Zend\Db\Sql\Expression;
 class PsrTable
 {
     protected $tableGateway;

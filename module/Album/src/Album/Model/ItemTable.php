@@ -3,6 +3,11 @@ namespace Album\Model;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Validator\Db\RecordExists;
+use Zend\Db\TableGateway\AbstractTableGateway;
+use Zend\Db\Adapter\Adapter;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\Sql\Sql;
+use Zend\Db\Sql\Expression;
 class ItemTable
 {
     protected $tableGateway;
@@ -38,26 +43,41 @@ class ItemTable
         );
 
         $id = (int)$item->item_no;
-        echo $id;
-        $this->tableGateway->insert($data);
-        //check for primary key constraints here ********************************
-        /*if ($id == 0) {
+
+        $sql = new Sql($this->tableGateway->adapter);
+        $select = $sql->select();
+        $select->from('items');
+        $select->where(array('item_no' => $id));
+        $statement = $sql->prepareStatementForSqlObject($select);
+        $results = $statement->execute();
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $size = $results->count();
+        //$size2 = $resultSet->count();
+        //$state = false;
+
+        /*foreach($resultSet as $row){
+            $state = true;
+            error_log ( $row->brn . PHP_EOL );
+        }*/
+
+        error_log("brn test "."results->count=".$size);
+        //error_log("brn test "."resultSet->count=".$size2);
+        //error_log("brn test "."state".$state);
+        error_log("MyDebug"." Success");
+
+
+        if ($size == 0) {
             $this->tableGateway->insert($data);
+            error_log("item_no test ". "Add item");
         } else {
-            if ($this->getBusiness($id)) {
-                $this->tableGateway->update($data, array('brn' => $id));
+            if ($this->getItem($id)) {
+                $this->tableGateway->update($data, array('item_no' => $id));
+
             } else {
                 throw new \Exception('Form id does not exist');
             }
         }
-        /*
-        if ($id == 0) {
-            $this->tableGateway->insert($data);
-        }
-        else{
-            $this->tableGateway->update($data, array('brn' => $id));
-        }*/
-
     }
 
     public function deleteItem($id)
