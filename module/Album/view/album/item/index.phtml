@@ -4,28 +4,39 @@
 $title = 'Registered Items';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<p>
-    <a href="<?php echo $this->url('item', array('action'=>'add'));?>"><input class="btn btn-primary" value="Add New Item"></a>
-</p>
+<div class="row">
+    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
 
-<table class="table">
+
+    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+        <h1>
+            <a href="<?php echo $this->url('item', array('action' => 'add')); ?>"><input type="button"
+                                                                                         class="btn btn-primary btn-lg pull-right btn-block"
+                                                                                         value="Add New"></a></h1>
+    </div>
+</div>
+
+<table class="table table-striped">
     <tr>
         <th>Item Number</th>
-        <th>name</th>
-        <th>description</th>
+        <th>Name</th>
+        <th>Description</th>
         <th>&nbsp;</th>
     </tr>
     <?php foreach ($items as $item) : ?>
         <tr>
-            <td><?php echo $this->escapeHtml($item->item_no);?></td>
-            <td><?php echo $this->escapeHtml($item->name);?></td>
-            <td><?php echo $this->escapeHtml($item->description);?></td>
-            <td>
+            <td><?php echo $this->escapeHtml($item->item_no); ?></td>
+            <td><?php echo $this->escapeHtml($item->name); ?></td>
+            <td><?php echo $this->escapeHtml($item->description); ?></td>
+            <td class="text-right">
                 <a href="<?php echo $this->url('item',
-                    array('action'=>'edit', 'id' => $item->item_no));?>">Edit</a>
+                    array('action' => 'edit', 'id' => $item->item_no));?>"><input type="button"
+                                                                                  class="btn btn-xs btn-default"
+                                                                                  value="Edit"></a>
                 <a href="<?php echo $this->url('item',
-                    array('action'=>'delete', 'id' => $item->item_no));?>">Delete</a>
+                    array('action' => 'delete', 'id' => $item->item_no));?>"><input type="button"
+                                                                                    class="btn btn-xs btn-default"
+                                                                                    value="Delete"></a>
             </td>
         </tr>
     <?php endforeach; ?>

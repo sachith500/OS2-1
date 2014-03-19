@@ -4,12 +4,21 @@
 $title = 'Customers';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<p>
-    <a href="<?php echo $this->url('customer', array('action'=>'add'));?>"><input class="btn btn-primary" value="Add New Customer"></a>
-</p>
 
-<table class="table">
+
+<div class="row">
+    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
+
+
+    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+        <h1>
+            <a href="<?php echo $this->url('customer', array('action' => 'add')); ?>"><input type="button"
+                    class="btn btn-primary btn-lg pull-right btn-block"
+                    value="Add New"></a></h1>
+    </div>
+</div>
+
+<table class="table table-striped">
 
     <tr>
         <th>CID</th>
@@ -19,6 +28,7 @@ $this->headTitle($title);
         <th>PO Box</th>
         <th>Street</th>
         <th>City</th>
+        <th>&nbsp;</th>
 
     </tr>
     <?php foreach ($customers as $customer) : ?>
@@ -30,11 +40,15 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($customer->po_box);?></td>
             <td><?php echo $this->escapeHtml($customer->street);?></td>
             <td><?php echo $this->escapeHtml($customer->city);?></td>
-            <td>
+            <td class="text-right">
                 <a href="<?php echo $this->url('customer',
-                    array('action'=>'edit', 'id' => $customer->CID));?>">Edit</a>
+                    array('action'=>'edit', 'id' => $customer->CID));?>"><input type="button"
+                                                                                class="btn btn-xs btn-default"
+                                                                                value="Edit"></a>
                 <a href="<?php echo $this->url('customer',
-                    array('action'=>'delete', 'id' => $customer->CID));?>">Delete</a>
+                    array('action'=>'delete', 'id' => $customer->CID));?>"><input type="button"
+                                                                                  class="btn btn-xs btn-default"
+                                                                                  value="Delete"></a>
             </td>
         </tr>
     <?php endforeach; ?>
