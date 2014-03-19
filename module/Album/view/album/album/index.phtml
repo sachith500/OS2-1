@@ -7,125 +7,144 @@ $this->headTitle($title);
 
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <hr>
+<div class="col-md-4">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#business">
+                        Businesses
+                    </a>
+                </h4>
+            </div>
+            <div id="business" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+                        <li class="active"><a
+                                href="<?php echo $this->url('business') ?>"><?php echo $this->translate('Show Business') ?></a>
+                        </li>
+                        <li class="active"><a
+                                href="<?php echo $this->url('business', array('action' => 'add')) ?>"><?php echo $this->translate('Add Business') ?></a>
+                        </li>
 
-<div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#business">
-                    Businesses
-                </a>
-            </h4>
+
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div id="business" class="panel-collapse collapse">
-            <div class="panel-body">
-                <ul class="nav">
-                    <li class="active"><a
-                            href="<?php echo $this->url('business') ?>"><?php echo $this->translate('Show Business') ?></a>
-                    </li>
-                    <li class="active"><a
-                            href="<?php echo $this->url('business',array('action'=>'add')) ?>"><?php echo $this->translate('Add Business') ?></a>
-                    </li>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#customer">
+                        Customers
+                    </a>
+                </h4>
+            </div>
+            <div id="customer" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="nav">
 
+                        <li class="active"><a
+                                href="<?php echo $this->url('customer') ?>"><?php echo $this->translate('Show Customer') ?></a>
+                        </li>
+                        <li class="active"><a
+                                href="<?php echo $this->url('customer', array('action' => 'add')) ?>"><?php echo $this->translate('Add Customer') ?></a>
+                        </li>
 
-                </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#item">
+                        Items
+                    </a>
+                </h4>
+            </div>
+            <div id="item" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+
+                        <li class="active"><a
+                                href="<?php echo $this->url('item') ?>"><?php echo $this->translate('Show Item') ?></a>
+                        </li>
+                        <li class="active"><a
+                                href="<?php echo $this->url('item', array('action' => 'add')) ?>"><?php echo $this->translate('Add Item') ?></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#psr">
+                        Personal Sales Representatives
+                    </a>
+                </h4>
+            </div>
+            <div id="psr" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+
+                        <li class="active"><a
+                                href="<?php echo $this->url('psr') ?>"><?php echo $this->translate('Show Personal Sales Representatives') ?></a>
+                        </li>
+
+                        <li class="active"><a
+                                href="<?php echo $this->url('psr', array('action' => 'add')) ?>"><?php echo $this->translate('Add New Personal Sales Representative') ?></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#order">
+                        Orders
+                    </a>
+                </h4>
+            </div>
+            <div id="order" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="nav">
+
+                        <li class="active"><a
+                                href="<?php echo $this->url('order') ?>"><?php echo $this->translate('Show Orders') ?></a>
+                        </li>
+
+                        <li class="active"><a
+                                href="<?php echo $this->url('order', array('action' => 'add')) ?>"><?php echo $this->translate('Create New Order') ?></a>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#customer">
-                    Customers
-                </a>
-            </h4>
-        </div>
-        <div id="customer" class="panel-collapse collapse">
-            <div class="panel-body">
-                <ul class="nav">
+</div>
 
-                    <li class="active"><a
-                            href="<?php echo $this->url('customer') ?>"><?php echo $this->translate('Show Customer') ?></a>
-                    </li>
-                    <li class="active"><a
-                            href="<?php echo $this->url('customer',array('action'=>'add')) ?>"><?php echo $this->translate('Add Customer') ?></a>
-                    </li>
+<div class="col-md-8">
+    <h1 class="text-center">One Shot Shop<br>
+        <small>Once you buy, never you come back</small>
+    </h1>
 
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#item">
-                    Items
-                </a>
-            </h4>
-        </div>
-        <div id="item" class="panel-collapse collapse">
-            <div class="panel-body">
-                <ul class="nav">
-
-                    <li class="active"><a
-                            href="<?php echo $this->url('item') ?>"><?php echo $this->translate('Show Item') ?></a>
-                    </li>
-                    <li class="active"><a
-                            href="<?php echo $this->url('item',array('action'=>'add')) ?>"><?php echo $this->translate('Add Item') ?></a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#psr">
-                    Personal Sales Representatives
-                </a>
-            </h4>
-        </div>
-        <div id="psr" class="panel-collapse collapse">
-            <div class="panel-body">
-                <ul class="nav">
-
-                    <li class="active"><a
-                            href="<?php echo $this->url('psr') ?>"><?php echo $this->translate('Show Personal Sales Representatives') ?></a>
-                    </li>
-
-                    <li class="active"><a
-                            href="<?php echo $this->url('psr',array('action'=>'add')) ?>"><?php echo $this->translate('Add New Personal Sales Representative') ?></a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#order">
-                    Orders
-                </a>
-            </h4>
-        </div>
-        <div id="order" class="panel-collapse collapse">
-            <div class="panel-body">
-                <ul class="nav">
-
-                    <li class="active"><a
-                            href="<?php echo $this->url('order') ?>"><?php echo $this->translate('Show Orders') ?></a>
-                    </li>
-
-                    <li class="active"><a
-                            href="<?php echo $this->url('order',array('action'=>'add')) ?>"><?php echo $this->translate('Create New Order') ?></a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </div>
+    <h6>
+        Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha
+        chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu
+        Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu
+        Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha
+        chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu
+        Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu
+        Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha
+        chaalu Chachcha maalu Machcha chaalu Chachcha maalu Machcha chaalu
+    </h6>
+</div>
