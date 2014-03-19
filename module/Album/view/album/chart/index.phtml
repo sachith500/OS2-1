@@ -1,0 +1,23 @@
+<?php
+
+$title = 'Statistics';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<ul>
+    <li class="active"><a
+            href="<?php echo $this->url('chart', array('action' => 'orderDist')) ?>"><?php echo $this->translate('Orders Distribution') ?></a>
+    </li>
+    <li class="active"><a
+            href="<?php echo $this->url('chart', array('action' => 'customerDist')) ?>"><?php echo $this->translate('Customers Distribution') ?></a>
+    </li>
+    <li class="active"><a
+            href="<?php echo $this->url('chart', array('action' => 'priceVariation')) ?>"><?php echo $this->translate('Prices Variation') ?></a>
+    </li>
+    <li class="active"><a
+            href="<?php echo $this->url('chart',array('action'=>'orderTimeline')) ?>"><?php echo $this->translate('Daily Sales') ?></a>
+    </li>
+
+</ul>

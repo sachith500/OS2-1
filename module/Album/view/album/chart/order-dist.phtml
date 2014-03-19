@@ -1,5 +1,26 @@
 <html>
 <head>
+
+    <?php
+    // module/Album/view/album/album/index.phtml:
+
+    $title = 'Order Distribution';
+    $this->headTitle($title);
+    ?>
+
+
+    <div class="row">
+        <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
+
+
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+            <h1>
+                <a href="<?php echo $this->url('chart'); ?>"><input type="button"
+                                                                                                 class="btn btn-primary btn-lg pull-right btn-block"
+                                                                                                 value="Back"></a></h1>
+        </div>
+    </div>
+
     <?php
     use Album\Controller\Chart;
 
