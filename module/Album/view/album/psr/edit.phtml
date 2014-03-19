@@ -1,0 +1,27 @@
+<?php
+// module/Album/view/album/album/edit.phtml:
+
+$title = 'Edit psr';
+$this->headTitle($title);
+?>
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'psr',
+    array(
+        'action' => 'edit',
+        'id'     => $this->emp_id,
+    )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formRow($form->get('emp_id'));
+echo $this->formRow($form->get('name'));
+echo $this->formRow($form->get('po_box'));
+echo $this->formRow($form->get('street'));
+echo $this->formRow($form->get('city'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

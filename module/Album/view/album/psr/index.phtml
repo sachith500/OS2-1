@@ -1,0 +1,37 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Registered Psrs';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('psr', array('action'=>'add'));?>"><input class="btn btn-primary" value="Add New Psr"></a>
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>emp_id</th>
+        <th>name</th>
+        <th>po_box</th>
+        <th>street</th>
+        <th>city</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($psrs as $psr) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($psr->emp_id);?></td>
+            <td><?php echo $this->escapeHtml($psr->name);?></td>
+            <td><?php echo $this->escapeHtml($psr->po_box);?></td>
+            <td><?php echo $this->escapeHtml($psr->street);?></td>
+            <td><?php echo $this->escapeHtml($psr->city);?></td>
+            <td>
+                <a href="<?php echo $this->url('psr',
+                    array('action'=>'edit', 'id' => $psr->emp_id));?>">Edit</a>
+                <a href="<?php echo $this->url('psr',
+                    array('action'=>'delete', 'id' => $psr->emp_id));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
