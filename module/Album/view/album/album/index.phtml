@@ -90,17 +90,21 @@ $this->headTitle($title);
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#chart">
-                    Charts
+                <a data-toggle="collapse" data-parent="#accordion" href="#psr">
+                    Personal Sales Representative
                 </a>
             </h4>
         </div>
-        <div id="chart" class="panel-collapse collapse">
+        <div id="psr" class="panel-collapse collapse">
             <div class="panel-body">
                 <ul class="nav">
 
                     <li class="active"><a
-                            href="<?php echo $this->url('chart') ?>"><?php echo $this->translate('Show Orders Distribution') ?></a>
+                            href="<?php echo $this->url('psr') ?>"><?php echo $this->translate('Show Personal Sales Representatives') ?></a>
+                    </li>
+
+                    <li class="active"><a
+                            href="<?php echo $this->url('psr',array('action'=>'add')) ?>"><?php echo $this->translate('Add New Personal Sales Representative') ?></a>
                     </li>
 
                 </ul>

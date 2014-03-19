@@ -12,6 +12,17 @@ use Zend\Mvc\Controller\AbstractActionController;
 
 class ChartController extends AbstractActionController{
     public function indexAction(){
+        $type = "PieChart";
+        $data = array(
+            array('type' => 'Mail Order', 'amount' => 2),
+            array('type' => 'Large Order', 'amount' => 1),
+            array('type' => 'Retail Order', 'amount' => 4)
+        );
+
+        return array(
+            'type'=>$type,
+            'data'=>$data,
+        );
 
     }
 }
