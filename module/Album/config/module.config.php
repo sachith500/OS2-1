@@ -132,6 +132,7 @@ return array(
             'item' => __DIR__ . '/../view',
             'order' => __DIR__ . '/../view',
             'psr' => __DIR__ . '/../view',
+            'chart' => __DIR__ . '/../view',
         ),
     ),
 );
