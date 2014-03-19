@@ -7,6 +7,7 @@ return array(
             'Album\Controller\Customer' => 'Album\Controller\CustomerController',
             'Album\Controller\Item' => 'Album\Controller\ItemController',
             'Album\Controller\Order' => 'Album\Controller\OrderController',
+            'Album\Controller\Chart'=>'Album\Controller\ChartController',
         ),
     ),
 
@@ -83,6 +84,21 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'Album\Controller\Order',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+
+            'chart' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/chart[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Chart',
                         'action'     => 'index',
                     ),
                 ),
