@@ -24,4 +24,32 @@ echo $this->formRow($form->get('po_box'));
 echo $this->formRow($form->get('street'));
 echo $this->formRow($form->get('city'));
 echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+echo $this->form()->closeTag(); ?>
+
+
+<br>
+<table class="table table-striped">
+    <tr><th>Contact Numbers</th><td></td></tr>
+    <?php foreach ($contacts as $contact) : ?>
+
+        <tr>
+            <td><?php echo $this->escapeHtml($contact->contact_no); ?></td>
+            <td>
+                <form method="post">
+                    <input type="hidden" name="selectedNum" value="<?php echo $this->escapeHtml($contact->contact_no);?>">
+                    <input type="hidden" name="clickedDel" value="YES">
+                    <input type="submit" value = "delete">
+                </form>
+            </td>
+
+        </tr>
+    <?php endforeach; ?>
+    <tr><td>
+            <form method="post">
+                <input type="text" name="contact">
+        </td><td>
+            <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value = "Save">
+            </form>
+        </td>
+    </tr>
+</table>

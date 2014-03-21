@@ -6,10 +6,12 @@ use Album\Model\Psr;
 use Album\Form\PsrForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Album\Controller\TestController;
 
 class PsrController extends AbstractActionController
 {
     protected $psrTable;
+    protected $testController;
 
     public function indexAction()
     {
@@ -76,10 +78,22 @@ class PsrController extends AbstractActionController
                 return $this->redirect()->toRoute('psr');
             }
         }
+        $testController = new TestController();
+
+        if($_POST["saveClicked"] == 'Save'){
+            $stash = $testController->runSql('INSERT INTO psr_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
+        }
+
+        //echo $_POST["selectedNum"];
+
+        if($_POST["clickedDel"] == 'YES'){
+            $stash = $testController->runSql('DELETE FROM psr_contacts WHERE( contact_no='.$_POST["selectedNum"].')', $this->getServiceLocator());
+        }
 
         return array(
             'emp_id' => $id,
             'form' => $form,
+            'contacts' => $testController->runSql('SELECT * FROM psr_contacts WHERE emp_id ='.$id, $this->getServiceLocator()),
         );
     }
 
