@@ -4,7 +4,7 @@
 $title = 'Edit business';
 $this->headTitle($title);
 ?>
-    <h1><?php echo $this->escapeHtml($title); ?></h1>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <?php
 $form = $this->form;
@@ -12,7 +12,7 @@ $form->setAttribute('action', $this->url(
     'business',
     array(
         'action' => 'edit',
-        'id'     => $this->brn,
+        'id' => $this->brn,
     )
 ));
 $form->prepare();
@@ -21,4 +21,32 @@ echo $this->form()->openTag($form);
 echo $this->formRow($form->get('brn'));
 echo $this->formRow($form->get('name'));
 echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+echo $this->form()->closeTag();?>
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact">
+    Add Tp
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">New Contact Number</h4>
+
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    Contact Number : <input type="text" name="contact">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary"  value="save">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

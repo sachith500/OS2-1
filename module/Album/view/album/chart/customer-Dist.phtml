@@ -14,7 +14,22 @@ $this->headTitle($title);
         <h1>
             <a href="<?php echo $this->url('chart'); ?>"><input type="button"
                                                                 class="btn btn-primary btn-lg pull-right btn-block"
-                                                                        value="Back"></a></h1>
+                                                                value="Back"></a></h1>
     </div>
 </div>
+
 <hr>
+<?php
+use Album\Controller\Chart;
+
+$chart = new Chart($type);
+
+$chart->load($data, 'array');
+$options = array('title' => 'Orders', 'is3D' => true, 'width' => 750, 'height' => 600);
+echo $chart->draw('my_div', $options);
+?>
+</head>
+<body>
+<div id="my_div"></div>
+</body></div>
+</html>

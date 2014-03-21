@@ -6,7 +6,7 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <hr>
 
-<ul class="list-group">
+<ul class="list-group ">
     <li class="list-group-item"><a
             href="<?php echo $this->url('chart', array('action' => 'orderDist')) ?>"><?php echo $this->translate('Orders Distribution') ?></a>
     </li>
@@ -17,7 +17,7 @@ $this->headTitle($title);
             href="<?php echo $this->url('chart', array('action' => 'priceVariation')) ?>"><?php echo $this->translate('Prices Variation') ?></a>
     </li>
     <li class="list-group-item"><a
-            href="<?php echo $this->url('chart',array('action'=>'orderTimeline')) ?>"><?php echo $this->translate('Daily Sales') ?></a>
+            href="<?php echo $this->url('chart', array('action' => 'orderTimeline')) ?>"><?php echo $this->translate('Daily Sales') ?></a>
     </li>
 
 </ul>

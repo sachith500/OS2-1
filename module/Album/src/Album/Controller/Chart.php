@@ -1,6 +1,7 @@
 <?php
 namespace Album\Controller;
-class Chart {
+class Chart
+{
 
     private static $_first = true;
     private static $_count = 0;
@@ -14,7 +15,8 @@ class Chart {
     /**
      * sets the chart type and updates the chart counter
      */
-    public function __construct($chartType, $skipFirstRow = false){
+    public function __construct($chartType, $skipFirstRow = false)
+    {
         $this->_chartType = $chartType;
         $this->_skipFirstRow = $skipFirstRow;
         self::$_count++;
@@ -23,20 +25,22 @@ class Chart {
     /**
      * loads the dataset and converts it to the correct format
      */
-    public function load($data, $dataType = 'json'){
+    public function load($data, $dataType = 'json')
+    {
         $this->_data = ($dataType != 'json') ? $this->dataToJson($data) : $data;
     }
 
     /**
      * load jsapi
      */
-    private function initChart(){
+    private function initChart()
+    {
         self::$_first = false;
 
         $output = '';
         // start a code block
-        $output .= '<script type="text/javascript" src="https://www.google.com/jsapi"></script>'."\n";
-        $output .= '<script type="text/javascript">google.load(\'visualization\', \'1.0\', {\'packages\':[\'corechart\']});</script>'."\n";
+        $output .= '<script type="text/javascript" src="https://www.google.com/jsapi"></script>' . "\n";
+        $output .= '<script type="text/javascript">google.load(\'visualization\', \'1.0\', {\'packages\':[\'corechart\']});</script>' . "\n";
 
         return $output;
     }
@@ -45,10 +49,11 @@ class Chart {
      * draws the chart
      */
 
-    public function draw($div, Array $options = array()){
+    public function draw($div, Array $options = array())
+    {
         $output = '';
 
-        if(self::$_first)$output .= $this->initChart();
+        if (self::$_first) $output .= $this->initChart();
 
         // start a code block
         $output .= '<script type="text/javascript">';
@@ -75,18 +80,19 @@ class Chart {
     /**
      * substracts the column names from the first and second row in the dataset
      */
-    private function getColumns($data){
+    private function getColumns($data)
+    {
         $cols = array();
-        foreach($data[0] as $key => $value){
-            if(is_numeric($key)){
-                if(is_string($data[1][$key])){
+        foreach ($data[0] as $key => $value) {
+        if (is_numeric($key)) {
+                if (is_string($data[1][$key])) {
                     $cols[] = array('id' => '', 'label' => $value, 'type' => 'string');
                 } else {
                     $cols[] = array('id' => '', 'label' => $value, 'type' => 'number');
                 }
                 $this->_skipFirstRow = true;
             } else {
-                if(is_string($value)){
+                if (is_string($value)) {
                     $cols[] = array('id' => '', 'label' => $key, 'type' => 'string');
                 } else {
                     $cols[] = array('id' => '', 'label' => $key, 'type' => 'number');
@@ -100,15 +106,17 @@ class Chart {
      * convert array data to json
      * info: http://code.google.com/intl/nl-NL/apis/chart/interactive/docs/datatables_dataviews.html#javascriptliteral
      */
-    private function dataToJson($data){
+    private function dataToJson($data)
+    {
         $cols = $this->getColumns($data);
 
         $rows = array();
-        foreach($data as $key => $row){
-            if($key != 0 || !$this->_skipFirstRow){
+        foreach ($data as $key => $row) {
+            if ($key != 0 || !$this->_skipFirstRow) {
                 $c = array();
-                foreach($row as $v){
+                foreach ($row as $v) {
                     $c[] = array('v' => $v);
+
                 }
                 $rows[] = array('c' => $c);
             }

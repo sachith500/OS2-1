@@ -74,6 +74,7 @@ class BusinessController extends AbstractActionController
                 return $this->redirect()->toRoute('business');
             }
         }
+        echo $_POST["contact"];
 
         return array(
             'brn' => $id,
