@@ -6,6 +6,7 @@ use Album\Model\Customer;
 use Album\Form\CustomerForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Album\Controller\TestController;
 
 class CustomerController extends AbstractActionController
 {

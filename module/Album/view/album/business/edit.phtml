@@ -17,39 +17,36 @@ $form->setAttribute('action', $this->url(
 ));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo '<b>Brn: </b>'.$this->brn."<br>";
-echo $this->formHidden($form->get('brn'));
-echo $this->formRow($form->get('name'));
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();?>
+echo $this->form()->openTag($form);?>
+<?php echo '<b>Brn: </b>'.$this->brn."<br>"; ?>
 
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#contact">
-    Add Tp
-</button>
+<?php echo $this->formHidden($form->get('brn')); ?>
+<?php echo $this->formRow($form->get('name')); ?>
+<div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+<?php echo $this->form()->closeTag();?>
+<table class="table table-striped">
+<tr><th>Contact Numbers</th><td></td></tr>
+<?php foreach ($contacts as $contact) : ?>
 
-<!-- Modal -->
-<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">New Contact Number</h4>
+    <tr>
+    <td><?php echo $this->escapeHtml($contact->contact_no); ?></td>
+    <td>
+        <form method="post">
+            <input type="hidden" name="selectedNum" value="<?php echo $this->escapeHtml($contact->contact_no);?>">
+            <input type="hidden" name="clickedDel" value="YES">
+            <input type="submit" value = "delete">
+        </form>
+    </td>
 
-            </div>
+</tr>
+<?php endforeach; ?>
+    <tr><td>
             <form method="post">
-                <div class="modal-body">
-                    Contact Number : <input type="text" name="contact">
-                    <input type="hidden" name="clicked" value="YES">
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary"  value="save">
-                </div>
+                <input type="text" name="contact">
+        </td><td>
+                <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value = "Save">
             </form>
-        </div>
-    </div>
-</div>
-
+        </td>
+    </tr>
+</table>
 

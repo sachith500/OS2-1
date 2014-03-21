@@ -79,18 +79,21 @@ class BusinessController extends AbstractActionController
         }
 
         $testController = new TestController();
-        if($_POST["clicked"] == 'YES'){
-           // echo('clicked yako');
-            //echo 'INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')';
-           $stash = $testController->runSql('INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
 
+        if($_POST["saveClicked"] == 'Save'){
+            $stash = $testController->runSql('INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
         }
 
+        //echo $_POST["selectedNum"];
 
+        if($_POST["clickedDel"] == 'YES'){
+        $stash = $testController->runSql('DELETE FROM business_contacts WHERE( contact_no='.$_POST["selectedNum"].')', $this->getServiceLocator());
+        }
 
         return array(
             'brn' => $id,
             'form' => $form,
+            'contacts' => $testController->runSql('SELECT * FROM business_contacts WHERE brn ='.$id, $this->getServiceLocator()),
         );
     }
 
