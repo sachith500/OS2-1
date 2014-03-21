@@ -40,7 +40,9 @@ echo $this->form()->closeTag();?>
             <form method="post">
                 <div class="modal-body">
                     Contact Number : <input type="text" name="contact">
+                    <input type="hidden" name="clicked" value="YES">
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary"  value="save">

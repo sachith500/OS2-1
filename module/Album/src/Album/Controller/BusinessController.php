@@ -6,10 +6,12 @@ use Album\Model\Business;
 use Album\Form\BusinessForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Album\Controller\TestController;
 
 class BusinessController extends AbstractActionController
 {
     protected $businessTable;
+    protected $testController;
 
     public function indexAction()
     {
@@ -75,7 +77,16 @@ class BusinessController extends AbstractActionController
                 return $this->redirect()->toRoute('business');
             }
         }
-        echo $_POST["contact"];
+
+        $testController = new TestController();
+        if($_POST["clicked"] == 'YES'){
+           // echo('clicked yako');
+            //echo 'INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')';
+           $stash = $testController->runSql('INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')');
+
+        }
+
+
 
         return array(
             'brn' => $id,
