@@ -1,0 +1,21 @@
+<?php
+// module/Album/view/album/test/index.phtml:
+
+$title = 'Testing Purposes';
+$this->headTitle($title);
+
+echo $test;
+echo '<br>';
+
+
+foreach($results as $row){
+    echo $row->brn." ".$row->name.PHP_EOL;
+}
+
+echo PHP_EOL;
+
+foreach($results2 as $row){
+    echo $row->CID." ".$row->first_name.PHP_EOL;
+}
+
+?>

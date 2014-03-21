@@ -8,18 +8,20 @@ $this->headTitle($title);
 <body>
 <div class="container">
 
-    <?php
-    $form = $this->form;
-    $form->setAttribute('action', $this->url('business', array('action' => 'add')));
-    $form->prepare();?>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'business',
+     array(
+         'action' => 'add'
+     )
+));
+$form->prepare();
 
-<form class="form-control">
-    <?php
     echo $this->form()->openTag($form);
     echo $this->formRow($form->get('brn'));
     echo $this->formRow($form->get('name'));
     echo $this->formSubmit($form->get('submit'));
     echo $this->form()->closeTag(); ?>
-</form>
 </div>
 </body>

@@ -20,6 +20,7 @@ class BusinessController extends AbstractActionController
 
     public function addAction()
     {
+
         $form = new BusinessForm();
         $form->get('submit')->setValue('Add');
         echo 'submit button name changed to Add';
@@ -35,7 +36,7 @@ class BusinessController extends AbstractActionController
             if ($form->isValid()) {
                 //echo 'inside isvalid';
                 $business->exchangeArray($form->getData());
-                $this->getBusinessTable()->saveBusiness($business);
+                $this->getBusinessTable()->saveBusiness($business, 0);
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('business');
@@ -68,7 +69,7 @@ class BusinessController extends AbstractActionController
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $this->getBusinessTable()->saveBusiness($form->getData());
+                $this->getBusinessTable()->saveBusiness($form->getData(), 1);
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('business');

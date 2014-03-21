@@ -9,6 +9,7 @@ return array(
             'Album\Controller\Order' => 'Album\Controller\OrderController',
             'Album\Controller\Chart'=>'Album\Controller\ChartController',
             'Album\Controller\Psr'=>'Album\Controller\PsrController',
+            'Album\Controller\Test'=>'Album\Controller\TestController',
 
         ),
     ),
@@ -120,6 +121,21 @@ return array(
                     ),
                 ),
             ),
+
+            'test' => array(
+                'type'    => 'segment',
+                'options' => array(
+                    'route'    => '/test[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id'     => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Album\Controller\Test',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
 
@@ -133,6 +149,7 @@ return array(
             'order' => __DIR__ . '/../view',
             'psr' => __DIR__ . '/../view',
             'chart' => __DIR__ . '/../view',
+            'test' => __DIR__ . '/../view',
         ),
     ),
 );

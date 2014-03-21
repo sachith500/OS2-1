@@ -35,7 +35,12 @@ class BusinessTable
         return $row;
     }
 
-    public function saveBusiness(Business $business)
+    public function getDatabaseAdapter()
+    {
+        return $this->tableGateway->adapter;
+    }
+
+    public function saveBusiness(Business $business, $option)
     {
         $data = array(
             'brn' => $business->brn,
@@ -69,10 +74,14 @@ class BusinessTable
         error_log("MyDebug"." Success");
 
 
-        if ($size == 0) {
-            $this->tableGateway->insert($data);
-            error_log("brn test ". "Add Business");
-        } else {
+        if ($option == 0) {
+            if($size == 0){
+                $this->tableGateway->insert($data);
+                error_log("brn test ". "Add Business");
+            }else{
+                throw new \Exception('A Business with the same BRN already exists');
+            }
+        }else {
             if ($this->getBusiness($id)) {
                 $this->tableGateway->update($data, array('brn' => $id));
                 error_log("brn test ". "Edit Business");
