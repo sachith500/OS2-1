@@ -24,6 +24,8 @@ echo $this->form()->openTag($form);?>
 <?php echo $this->formRow($form->get('name')); ?>
 <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
 <?php echo $this->form()->closeTag();?>
+
+<br>
 <table class="table table-striped">
 <tr><th>Contact Numbers</th><td></td></tr>
 <?php foreach ($contacts as $contact) : ?>

@@ -11,6 +11,7 @@ use Album\Controller\TestController;
 class CustomerController extends AbstractActionController
 {
     protected $customerTable;
+    protected $testController;
 
     public function indexAction()
     {
@@ -82,9 +83,22 @@ class CustomerController extends AbstractActionController
             }
         }
 
+        $testController = new TestController();
+
+        if($_POST["saveClicked"] == 'Save'){
+            $stash = $testController->runSql('INSERT INTO customer_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
+        }
+
+        //echo $_POST["selectedNum"];
+
+        if($_POST["clickedDel"] == 'YES'){
+            $stash = $testController->runSql('DELETE FROM customer_contacts WHERE( contact_no='.$_POST["selectedNum"].')', $this->getServiceLocator());
+        }
+
         return array(
             'CID' => $id,
             'form' => $form,
+            'contacts' => $testController->runSql('SELECT * FROM customer_contacts WHERE CID ='.$id, $this->getServiceLocator()),
         );
     }
 
