@@ -20,6 +20,12 @@ class CustomerController extends AbstractActionController
 
     public function addAction()
     {
+
+        /*testing DB Code*/
+
+
+
+        /*End testing DB Code*/
         $form = new CustomerForm();
         $form->get('submit')->setValue('Add');
         //echo 'submit button name changed to Add';
