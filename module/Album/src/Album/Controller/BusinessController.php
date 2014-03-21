@@ -82,7 +82,7 @@ class BusinessController extends AbstractActionController
         if($_POST["clicked"] == 'YES'){
            // echo('clicked yako');
             //echo 'INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')';
-           $stash = $testController->runSql('INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')');
+           $stash = $testController->runSql('INSERT INTO business_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
 
         }
 

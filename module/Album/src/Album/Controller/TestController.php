@@ -24,7 +24,7 @@ class TestController extends AbstractActionController{
         $resultSet = new ResultSet;
         $resultSet->initialize($results);
 
-        $resultSet2 = $this->runSql('SELECT * from customers');
+        $resultSet2 = $this->runSql('SELECT * from customers', $sm);
 
         return new viewModel(array(
             "test" => "Hi",
@@ -33,16 +33,15 @@ class TestController extends AbstractActionController{
         ));
     }
 
-    public function getAdapter()
+    public function getAdapter($sm)
     {
-        $sm = $this->getServiceLocator();
         $adapter = $sm->get('Zend\Db\Adapter\Adapter');
         return $adapter;
     }
 
-    public function runSql($sql)
+    public function runSql($sql, $sm)
     {
-        $adapter = $this->getAdapter();
+        $adapter = $this->getAdapter($sm);
         $resultSet = $adapter->query($sql, \Zend\Db\Adapter\Adapter::QUERY_MODE_EXECUTE);
         return $resultSet;
     }
