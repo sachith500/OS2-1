@@ -25,7 +25,7 @@ use Album\Controller\Chart;
 $chart = new Chart($type);
 
 $chart->load($data, 'array');
-$options = array('title' => 'Orders', 'is3D' => true, 'width' => 750, 'height' => 600);
+$options = array('title' => 'Customers', 'is3D' => true, 'width' => 750, 'height' => 600);
 echo $chart->draw('my_div', $options);
 ?>
 </head>
