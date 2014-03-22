@@ -84,8 +84,8 @@ class ChartController extends AbstractActionController
     {
         $type = "LineChart";
         $data = array(
-            array('date' => '2014-1-1', 'Price' => 30),
-            array('date' => '2014-2-2', 'Price' => 14045),
+            array('date' => '2014-1-1', 'Price' => 30000),
+            array('date' => '2014-2-2', 'Price' => 24045),
             array('date' => '2013-9-3', 'Price' => 55022),
             array('date' => '2014-1-4', 'Price' => 75284),
             array('date' => '2015-1-5', 'Price' => 41476),
