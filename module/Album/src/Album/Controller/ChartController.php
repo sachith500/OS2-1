@@ -82,16 +82,18 @@ class ChartController extends AbstractActionController
 
     public function priceVariationAction()
     {
-        $type = "LineChart";
-        $data = array(
-            array('date' => '2014-1-1', 'Price' => 30000),
-            array('date' => '2014-2-2', 'Price' => 24045),
-            array('date' => '2013-9-3', 'Price' => 55022),
-            array('date' => '2014-1-4', 'Price' => 75284),
-            array('date' => '2015-1-5', 'Price' => 41476),
-            array('date' => '2014-1-6', 'Price' => 33322),
-        );
+        //Generates a line chart based on item prices
+        $sm = $this->getServiceLocator();
+        $testCon = new TestController();
+        $query = 'select * from item_prices order by start_date;'; //sort to make it more meaningful
+        $resultSet = $testCon->runSql($query, $sm);
 
+
+        $data = array( );
+        foreach ($resultSet as $row){
+            array_push($data,array('date' => $row->start_date , 'Price' => (int)$row->price));
+        }
+        $type = "LineChart";
         return array(
             'type' => $type,
             'data' => $data,
