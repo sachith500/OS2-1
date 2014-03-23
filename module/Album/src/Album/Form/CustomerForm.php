@@ -118,7 +118,7 @@ class CustomerForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'credit_Limit',
+            'name' => 'credit_limit',
             'attributes' => array(
                 'type'  => 'text',
                 'class' => 'largeorder'
@@ -128,7 +128,7 @@ class CustomerForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'credit_Balance',
+            'name' => 'credit_balance',
             'attributes' => array(
                 'type'  => 'text',
                 'class' => 'largeorder'
