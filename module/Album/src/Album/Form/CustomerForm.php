@@ -19,7 +19,22 @@ class CustomerForm extends Form
                 'label' => 'Customer ID',
             ),
         ));
-
+        //Dropdown menu to select the customer type
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'customer_type',
+            'attributes' => array(
+                'id' => 'customer_type',
+            ),
+            'options' => array(
+            'label' => 'Customer Type',
+            'value_options' => array(
+                '0' => 'Large Order',
+                '1' => 'Mail Order',
+                '2' => 'VIP',
+                ),
+            )
+        ));
 
         $this->add(array(
             'name' => 'first_name',
@@ -87,6 +102,59 @@ class CustomerForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+            ),
+        ));
+
+
+        //Large order fields
+        $this->add(array(
+            'name' => 'id',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'largeorder'
+            ),
+            'options' => array(
+                'label' => 'ID',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'credit_limit',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'largeorder'
+            ),
+            'options' => array(
+                'label' => 'Credit Limit',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'credit_balance',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'largeorder'
+            ),
+            'options' => array(
+                'label' => 'Credit Balance',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'brn',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'largeorder'
+            ),
+            'options' => array(
+                'label' => 'BusinessRegistration Number',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'emp_id',
+            'attributes' => array(
+                'type'  => 'text',
+                'class' => 'largeorder'
+            ),
+            'options' => array(
+                'label' => 'Employee ID',
             ),
         ));
     }
