@@ -21,6 +21,8 @@ echo $this->formRow($form->get('street'));
 echo $this->formRow($form->get('city'));
 echo $this->formRow($form->get('id'));
 echo $this->formRow($form->get('brn'));
+echo $this->formRow($form->get('trn'));
+echo $this->formRow($form->get('email'));
 echo $this->formRow($form->get('credit_limit'));
 echo $this->formRow($form->get('credit_balance'));
 echo $this->formRow($form->get('emp_id'));
@@ -31,25 +33,57 @@ echo $this->formSubmit($form->get('submit'));
 
 $this->inlineScript()->captureStart();
 echo <<<JS
+    //form load
+    var dropdown = document.getElementById("customer_type");
+    var selected = dropdown.options[dropdown.selectedIndex].text;
+    if (selected == "Large Order"){
+    $(".largeorder").show();
+    $(".vip").hide();
+    $(".mailorder").hide();
+    $(".largeordervip").show();
+    $(".mailordervip").hide();
+    }
+    if (selected == "Mail Order"){
+    $(".largeorder").hide();
+    $(".vip").hide();
+    $(".mailorder").show();
+    $(".largeordervip").hide();
+    $(".mailordervip").show();
+    }
+    if (selected == "VIP"){
+    $(".largeorder").hide();
+    $(".vip").show();
+    $(".mailorder").hide();
+    $(".largeordervip").show();
+    $(".mailordervip").show();
+    }
 
+
+
+    //dropdown menu change
     $('#customer_type').change(function(){
-        //var dropdown = $('#customer_type');
         var dropdown = document.getElementById("customer_type");
         var selected = dropdown.options[dropdown.selectedIndex].text;
         if (selected == "Large Order"){
         $(".largeorder").show();
         $(".vip").hide();
         $(".mailorder").hide();
+        $(".largeordervip").show();
+        $(".mailordervip").hide();
         }
         if (selected == "Mail Order"){
         $(".largeorder").hide();
         $(".vip").hide();
         $(".mailorder").show();
+        $(".largeordervip").hide();
+        $(".mailordervip").show();
         }
         if (selected == "VIP"){
         $(".largeorder").hide();
         $(".vip").show();
         $(".mailorder").hide();
+        $(".largeordervip").show();
+        $(".mailordervip").show();
         }
     });
 JS;

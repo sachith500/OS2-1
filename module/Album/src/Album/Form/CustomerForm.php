@@ -105,31 +105,32 @@ class CustomerForm extends Form
             ),
         ));
 
-
-        //Large order fields
         $this->add(array(
             'name' => 'id',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'largeorder'
+                //'class' => 'largeorder'
             ),
             'options' => array(
                 'label' => 'ID',
                 'label_attributes' => array(
-                    'class'  => 'largeorder'
+                    //'class'  => 'largeorder'
                 ),
             ),
         ));
+
+
+        //Large order fields
         $this->add(array(
             'name' => 'credit_limit',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'largeorder'
+                'class'  => 'largeordervip'
             ),
             'options' => array(
                 'label' => 'Credit Limit',
                 'label_attributes' => array(
-                    'class'  => 'largeorder'
+                    'class'  => 'largeordervip'
                 ),
             ),
         ));
@@ -137,12 +138,12 @@ class CustomerForm extends Form
             'name' => 'credit_balance',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'largeorder'
+                'class'  => 'largeordervip'
             ),
             'options' => array(
                 'label' => 'Credit Balance',
                 'label_attributes' => array(
-                    'class'  => 'largeorder'
+                    'class'  => 'largeordervip'
                 ),
             ),
         ));
@@ -150,10 +151,10 @@ class CustomerForm extends Form
             'name' => 'brn',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'largeorder'
+                'class'  => 'largeorder'
             ),
             'options' => array(
-                'label' => 'BusinessRegistration Number',
+                'label' => 'Business Registration Number',
                 'label_attributes' => array(
                     'class'  => 'largeorder'
                 ),
@@ -169,6 +170,35 @@ class CustomerForm extends Form
                 'label' => 'Employee ID',
                 'label_attributes' => array(
                     'class'  => 'largeorder'
+                ),
+            ),
+        ));
+
+        //Mail order fields
+        $this->add(array(
+            'name' => 'email',
+            'attributes' => array(
+                'type'  => 'text',
+                'class'  => 'mailorder'
+            ),
+            'options' => array(
+                'label' => 'Email Address',
+                'label_attributes' => array(
+                    'class'  => 'mailorder'
+                ),
+            ),
+        ));
+
+        $this->add(array(
+            'name' => 'trn',
+            'attributes' => array(
+                'type'  => 'text',
+                'class'  => 'mailordervip'
+            ),
+            'options' => array(
+                'label' => 'Transaction Registration Number',
+                'label_attributes' => array(
+                    'class'  => 'mailordervip'
                 ),
             ),
         ));
