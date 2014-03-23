@@ -115,6 +115,9 @@ class CustomerForm extends Form
             ),
             'options' => array(
                 'label' => 'ID',
+                'label_attributes' => array(
+                    'class'  => 'largeorder'
+                ),
             ),
         ));
         $this->add(array(
@@ -125,6 +128,9 @@ class CustomerForm extends Form
             ),
             'options' => array(
                 'label' => 'Credit Limit',
+                'label_attributes' => array(
+                    'class'  => 'largeorder'
+                ),
             ),
         ));
         $this->add(array(
@@ -135,6 +141,9 @@ class CustomerForm extends Form
             ),
             'options' => array(
                 'label' => 'Credit Balance',
+                'label_attributes' => array(
+                    'class'  => 'largeorder'
+                ),
             ),
         ));
         $this->add(array(
@@ -145,6 +154,9 @@ class CustomerForm extends Form
             ),
             'options' => array(
                 'label' => 'BusinessRegistration Number',
+                'label_attributes' => array(
+                    'class'  => 'largeorder'
+                ),
             ),
         ));
         $this->add(array(
@@ -155,6 +167,9 @@ class CustomerForm extends Form
             ),
             'options' => array(
                 'label' => 'Employee ID',
+                'label_attributes' => array(
+                    'class'  => 'largeorder'
+                ),
             ),
         ));
     }
