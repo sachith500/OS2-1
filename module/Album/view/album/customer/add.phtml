@@ -12,6 +12,7 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formRow($form->get('CID'));
+echo $this->formRow($form->get('customer_type'));
 echo $this->formRow($form->get('first_name'));
 echo $this->formRow($form->get('middle_name'));
 echo $this->formRow($form->get('last_name'));

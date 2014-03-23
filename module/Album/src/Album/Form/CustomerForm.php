@@ -19,7 +19,19 @@ class CustomerForm extends Form
                 'label' => 'Customer ID',
             ),
         ));
-
+        //Dropdown menu to select the customer type
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Select',
+            'name' => 'customer_type',
+            'options' => array(
+            'label' => 'Customer Type',
+            'value_options' => array(
+                '0' => 'Large Order',
+                '1' => 'Mail Order',
+                '2' => 'VIP',
+                ),
+            )
+        ));
 
         $this->add(array(
             'name' => 'first_name',
