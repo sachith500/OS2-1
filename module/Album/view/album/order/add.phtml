@@ -12,6 +12,7 @@ $form->prepare();
 
 echo $this->form()->openTag($form);
 echo $this->formRow($form->get('order_no'));
+echo $this->formRow($form->get('order_type'));
 echo $this->formRow($form->get('date'));
 echo $this->formSubmit($form->get('submit'));
 echo $this->form()->closeTag();
