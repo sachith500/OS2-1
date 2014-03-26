@@ -67,8 +67,9 @@ class CustomerController extends AbstractActionController
                         //vip
                         break;
                 }
+                
                 $this->getCustomerTable()->saveCustomer($customer);
-                // Redirect to list of albums
+                // Redirect to list of customers
                 return $this->redirect()->toRoute('customer');
             }
         }
