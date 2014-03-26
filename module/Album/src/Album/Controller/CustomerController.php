@@ -65,6 +65,16 @@ class CustomerController extends AbstractActionController
                         break;
                     case 2:
                         //vip
+                        $testCon->runSql(
+                            'insert into '
+                            . 'vip_customers '
+                            . 'values ('
+                            . $form->get('id')->getValue()              . ','
+                            . $form->get('CID')->getValue()             . ','
+                            . $form->get('credit_limit')->getValue()    . ','
+                            . $form->get('credit_balance')->getValue()  . ','
+                            . $form->get('trn')->getValue()
+                            . ')',$sm);
                         break;
                 }
 
