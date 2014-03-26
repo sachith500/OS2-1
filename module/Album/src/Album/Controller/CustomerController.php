@@ -22,34 +22,57 @@ class CustomerController extends AbstractActionController
 
     public function addAction()
     {
-
-        /*testing DB Code*/
-
-
-
-        /*End testing DB Code*/
         $form = new CustomerForm();
         $form->get('submit')->setValue('Add');
-        //echo 'submit button name changed to Add';
         $request = $this->getRequest();
-        // echo 'getRequest()';
         if ($request->isPost()) {
-            echo 'inside if';
-
             $customer = new Customer();
             $form->setInputFilter($customer->getInputFilter());
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                //echo 'inside isvalid';
                 $customer->exchangeArray($form->getData());
-                $this->getCustomerTable()->saveCustomer($customer);
+                $dropdown = $form->get('customer_type');
+                $selection = $dropdown->getValue();
+                $sm = $this->getServiceLocator();
+                $testCon = new TestController();
+                switch ($selection){
+                    case 0:
+                        //large order
+                        $testCon->runSql(
+                            'insert into '
+                            . 'l_o_customers '
+                            . 'values ('
+                            . $form->get('id')->getValue()              . ','
+                            . $form->get('CID')->getValue()             . ','
+                            . $form->get('credit_limit')->getValue()    . ','
+                            . $form->get('credit_balance')->getValue()  . ','
+                            . $form->get('brn')->getValue()             . ','
+                            . $form->get('emp_id')->getValue()
+                            . ')',$sm);
+                        break;
+                    case 1:
+                        //mail order
+                        $testCon->runSql(
+                              'insert into '
+                            . 'mo_customers '
+                            . 'values ('
+                            . $form->get('id')->getValue()    . ','
+                            . $form->get('CID')->getValue()   . ','
+                            . $form->get('email')->getValue() . ','
+                            . $form->get('trn')->getValue()
+                            . ')',$sm);
+                        break;
+                    case 2:
+                        //vip
+                        break;
+                }
 
-                // Redirect to list of albums
+                $this->getCustomerTable()->saveCustomer($customer);
+                // Redirect to list of customers
                 return $this->redirect()->toRoute('customer');
             }
         }
-        //echo 'outside if';
         return array('form' => $form);
     }
 
