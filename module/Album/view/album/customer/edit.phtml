@@ -17,15 +17,27 @@ $form->setAttribute('action', $this->url(
 ));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('CID'));
-echo $this->formRow($form->get('first_name'));
-echo $this->formRow($form->get('middle_name'));
-echo $this->formRow($form->get('last_name'));
-echo $this->formRow($form->get('po_box'));
-echo $this->formRow($form->get('street'));
-echo $this->formRow($form->get('city'));
-echo $this->formSubmit($form->get('submit'));
+echo $this->form()->openTag($form);?>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div><?php echo $this->formRow($form->get('CID')); ?></div>
+        <div><?php echo $this->formRow($form->get('first_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('middle_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('last_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('po_box')); ?></div>
+        <div><?php echo $this->formRow($form->get('street')); ?></div>
+        <div><?php echo $this->formRow($form->get('city')); ?></div>
+        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+    </div>
+</div>
+
+
+
+<?php
+
+
+
+
 echo $this->form()->closeTag();
 
 ?>

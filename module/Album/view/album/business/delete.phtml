@@ -4,25 +4,30 @@
 $title = 'Delete business';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<p>Are you sure that you want to delete
-    <b>'<?php echo $this->escapeHtml($business->name); ?>'</b>?
-</p>
-<?php
-$url = $this->url('business', array(
-    'action' => 'delete',
-    'id'     => $this->brn,
-));
-?>
-<form action="<?php echo $url; ?>" method="post">
-    <div>
-        <table class="table table-striped ">
-            <tr>
-                <input class="btn btn-danger" type="submit" name="del" value="Yes" />
-        &nbsp;
-                <input class="btn btn-default" type="submit" name="del" value="No" />
-        &nbsp;
-            </tr>
-    </div>
-</form>
+
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+    <p>Are you sure that you want to delete
+        <b>'<?php echo $this->escapeHtml($business->name); ?>'</b>?
+    </p>
+    <?php
+    $url = $this->url('business', array(
+        'action' => 'delete',
+        'id' => $this->brn,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <table class="table table-striped ">
+                <tr>
+                    <input class="btn btn-danger" type="submit" name="del" value="Yes"/>
+                    &nbsp;
+                    <input class="btn btn-default" type="submit" name="del" value="No"/>
+                    &nbsp;
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>

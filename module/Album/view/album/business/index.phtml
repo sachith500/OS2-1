@@ -4,40 +4,50 @@
 $title = 'Registered Businesses';
 $this->headTitle($title);
 ?>
-<div class="row">
-    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
 
 
-    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
-        <h1>
-            <a href="<?php echo $this->url('business', array('action' => 'add')); ?>"><input type="button"
-                    class="btn btn-primary btn-lg pull-right btn-block"
-                    value="Add New"></a></h1>
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
+    <div class="row">
+        <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
+
+
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+            <h1>
+                <a href="<?php echo $this->url('business', array('action' => 'add')); ?>"><input type="button"
+                                                                                                 class="btn btn-primary btn-lg pull-right btn-block"
+                                                                                                 value="Add New"></a>
+            </h1>
+        </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-striped ">
+                <tr>
+                    <th>Business Registration Number</th>
+                    <th>Name</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <?php foreach ($businesses as $business) : ?>
+                    <tr>
+                        <td><?php echo $this->escapeHtml($business->brn); ?></td>
+                        <td><?php echo $this->escapeHtml($business->name); ?></td>
+                        <td class="text-right">
+                            <a class="" href="<?php echo $this->url('business',
+                                array('action' => 'edit', 'id' => $business->brn));?>"><input type="button"
+                                                                                              class="btn btn-xs btn-default"
+                                                                                              value="Edit"></a>
+                            &nbsp;
+                            <a class="" href="<?php echo $this->url('business',
+                                array('action' => 'delete', 'id' => $business->brn));?>"><input type="button"
+                                                                                                class="btn btn-xs btn-default"
+                                                                                                value="Delete"></a>
+                            &nbsp;&nbsp;
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
+    </div>
+
 </div>
 
-<table class="table table-striped ">
-    <tr>
-        <th>Business Registration Number</th>
-        <th>Name</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($businesses as $business) : ?>
-        <tr>
-            <td><?php echo $this->escapeHtml($business->brn); ?></td>
-            <td><?php echo $this->escapeHtml($business->name); ?></td>
-            <td class="text-right">
-                <a class="" href="<?php echo $this->url('business',
-                    array('action' => 'edit', 'id' => $business->brn));?>"><input type="button"
-                                                                                  class="btn btn-xs btn-default"
-                                                                                  value="Edit"></a>
-                &nbsp;
-                <a class="" href="<?php echo $this->url('business',
-                    array('action' => 'delete', 'id' => $business->brn));?>"><input type="button"
-                                                                                    class="btn btn-xs btn-default"
-                                                                                    value="Delete"></a>
-                &nbsp;&nbsp;
-            </td>
-        </tr>
-    <?php endforeach; ?>
-</table>

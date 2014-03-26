@@ -25,7 +25,7 @@ class BusinessController extends AbstractActionController
 
         $form = new BusinessForm();
         $form->get('submit')->setValue('Add');
-        echo 'submit button name changed to Add';
+       // echo 'submit button name changed to Add';
         $request = $this->getRequest();
        // echo 'getRequest()';
         if ($request->isPost()) {
