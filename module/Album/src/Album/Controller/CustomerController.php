@@ -43,8 +43,31 @@ class CustomerController extends AbstractActionController
             if ($form->isValid()) {
                 //echo 'inside isvalid';
                 $customer->exchangeArray($form->getData());
+                $dropdown = $form->get('customer_type');
+                $selection = $dropdown->getValue();
+                $sm = $this->getServiceLocator();
+                $testCon = new TestController();
+                switch ($selection){
+                    case 0:
+                        //large order
+                        break;
+                    case 1:
+                        //mail order
+                        $testCon->runSql(
+                              'insert into '
+                            . 'mo_customers '
+                            . 'values ('
+                            . $form->get('id')->getValue()    . ','
+                            . $form->get('CID')->getValue()   . ','
+                            . $form->get('email')->getValue() . ','
+                            . $form->get('trn')->getValue()
+                            . ')',$sm);
+                        break;
+                    case 2:
+                        //vip
+                        break;
+                }
                 $this->getCustomerTable()->saveCustomer($customer);
-
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('customer');
             }
