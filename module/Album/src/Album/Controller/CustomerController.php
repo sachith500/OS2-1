@@ -22,26 +22,15 @@ class CustomerController extends AbstractActionController
 
     public function addAction()
     {
-
-        /*testing DB Code*/
-
-
-
-        /*End testing DB Code*/
         $form = new CustomerForm();
         $form->get('submit')->setValue('Add');
-        //echo 'submit button name changed to Add';
         $request = $this->getRequest();
-        // echo 'getRequest()';
         if ($request->isPost()) {
-            echo 'inside if';
-
             $customer = new Customer();
             $form->setInputFilter($customer->getInputFilter());
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                //echo 'inside isvalid';
                 $customer->exchangeArray($form->getData());
                 $dropdown = $form->get('customer_type');
                 $selection = $dropdown->getValue();
@@ -67,13 +56,12 @@ class CustomerController extends AbstractActionController
                         //vip
                         break;
                 }
-                
+
                 $this->getCustomerTable()->saveCustomer($customer);
                 // Redirect to list of customers
                 return $this->redirect()->toRoute('customer');
             }
         }
-        //echo 'outside if';
         return array('form' => $form);
     }
 
