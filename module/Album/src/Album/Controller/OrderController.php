@@ -31,13 +31,33 @@ class OrderController extends AbstractActionController
             $order = new Order();
             $form->setInputFilter($order->getInputFilter());
             $form->setData($request->getPost());
-
             if ($form->isValid()) {
-                //echo 'inside isvalid';
+
+                $dropdown = $form->get('order_type');
+                $selection = $dropdown->getValue();
+                $sm = $this->getServiceLocator();
+                $testCon = new TestController();
+                $query = 'insert into ';
+                switch ($selection){
+                    case 0:
+                        $query .= 'large_orders ';
+                        break;
+                    case 1:
+                        $query .= 'mail_orders ';
+                        break;
+                    case 2:
+                        $query .= 'vip_orders ';
+                        break;
+                }
+                $query .= 'values(';
+                $query .= $form->get('id')->getValue()       . ',';
+                $query .= $form->get('order_no')->getValue() . ',';
+                $query .= $form->get('cid')->getValue()      . ')';
+                $testCon->runSql($query,$sm);
                 $order->exchangeArray($form->getData());
                 $this->getOrderTable()->saveOrder($order);
 
-                // Redirect to list of albums
+                // Redirect to list of orders
                 return $this->redirect()->toRoute('order');
             }
         }
