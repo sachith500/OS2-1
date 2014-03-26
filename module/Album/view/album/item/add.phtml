@@ -1,23 +1,26 @@
 <?php
 // module/Album/view/album/album/add.phtml:
 
-$title = 'Add new item';
+$title = 'Add New Item';
 $this->headTitle($title);
 ?>
-    <h1><?php echo $this->escapeHtml($title); ?></h1>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('item', array('action' => 'add')));
 $form->prepare();?>
 
-<table class="table table-striped">
-
-    <?php echo $this->form()->openTag($form);?>
-    <tr><td><?php echo $this->formRow($form->get('item_no'));?></td><td></td></tr>
-    <tr><td><?php echo $this->formRow($form->get('name'));?></td>
-    <tr><td><?php echo $this->formRow($form->get('description'));?></td>
-    <td><?php echo $this->formSubmit($form->get('submit'));?></td></tr>
-    <?php echo $this->form()->closeTag();?>
 
 
-</table>
+<?php echo $this->form()->openTag($form); ?>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div> <?php echo $this->formRow($form->get('item_no')); ?>  </div>
+        <div> <?php echo $this->formRow($form->get('name')); ?>  </div>
+        <div> <?php echo $this->formRow($form->get('description')); ?>  </div>
+        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+    </div>
+</div>
+
+<?php echo $this->form()->closeTag(); ?>
+

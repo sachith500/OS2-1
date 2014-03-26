@@ -14,6 +14,7 @@ class ItemForm extends Form
             'name' => 'item_no',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Item No',
@@ -24,6 +25,7 @@ class ItemForm extends Form
             'name' => 'name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Name',
@@ -34,6 +36,7 @@ class ItemForm extends Form
             'name' => 'description',
             'attributes' => array(
                 'type'  => 'textarea',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Description',
@@ -46,6 +49,7 @@ class ItemForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' =>'btn btn-default',
             ),
         ));
     }

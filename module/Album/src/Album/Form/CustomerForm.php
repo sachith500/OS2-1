@@ -126,7 +126,7 @@ class CustomerForm extends Form
             'options' => array(
                 'label' => 'ID',
                 'label_attributes' => array(
-                    
+
                     //'class'  => 'largeorder'
                 ),
             ),
@@ -138,7 +138,7 @@ class CustomerForm extends Form
             'name' => 'credit_limit',
             'attributes' => array(
                 'type'  => 'text',
-                'class'  => 'largeordervip'
+                'class'  => 'largeordervip form-control'
             ),
             'options' => array(
                 'label' => 'Credit Limit',
@@ -151,7 +151,7 @@ class CustomerForm extends Form
             'name' => 'credit_balance',
             'attributes' => array(
                 'type'  => 'text',
-                'class'  => 'largeordervip'
+                'class'  => 'largeordervip form-control'
             ),
             'options' => array(
                 'label' => 'Credit Balance',
@@ -164,7 +164,7 @@ class CustomerForm extends Form
             'name' => 'brn',
             'attributes' => array(
                 'type'  => 'text',
-                'class'  => 'largeorder'
+                'class'  => 'largeorder form-control'
             ),
             'options' => array(
                 'label' => 'Business Registration Number',
@@ -177,7 +177,7 @@ class CustomerForm extends Form
             'name' => 'emp_id',
             'attributes' => array(
                 'type'  => 'text',
-                'class' => 'largeorder'
+                'class' => 'largeorder form-control'
             ),
             'options' => array(
                 'label' => 'Employee ID',
@@ -192,7 +192,7 @@ class CustomerForm extends Form
             'name' => 'email',
             'attributes' => array(
                 'type'  => 'text',
-                'class'  => 'mailorder'
+                'class'  => 'mailorder form-control'
             ),
             'options' => array(
                 'label' => 'Email Address',
@@ -206,7 +206,7 @@ class CustomerForm extends Form
             'name' => 'trn',
             'attributes' => array(
                 'type'  => 'text',
-                'class'  => 'mailordervip'
+                'class'  => 'mailordervip form-control'
             ),
             'options' => array(
                 'label' => 'Transaction Registration Number',

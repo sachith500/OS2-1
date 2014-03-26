@@ -8,7 +8,7 @@ class BusinessForm extends Form
 
     public function __construct($name = null)
     {
-        $psrs =
+
 
         // we want to ignore the name passed
         parent::__construct('business');
@@ -37,7 +37,7 @@ class BusinessForm extends Form
             'name' => 'submit',
             'attributes' => array(
                 'type' => 'submit',
-                'value' => 'Go',
+                'value' => 'ADD',
                 'id' => 'submitbutton',
                 'class'=>'btn btn-default'
             ),

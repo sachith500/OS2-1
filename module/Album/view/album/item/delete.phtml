@@ -7,8 +7,7 @@ $this->headTitle($title);
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 
 <p>Are you sure that you want to delete
-    '<?php echo $this->escapeHtml($item->item_no); ?>' by
-    '<?php echo $this->escapeHtml($item->name); ?>'?
+       <b>'<?php echo $this->escapeHtml($item->name); ?>'</b>?
 </p>
 <?php
 $url = $this->url('item', array(
@@ -18,7 +17,7 @@ $url = $this->url('item', array(
 ?>
 <form action="<?php echo $url; ?>" method="post">
     <div>
-        <input type="submit" name="del" value="Yes" />
-        <input type="submit" name="del" value="No" />
+        <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+        <input class="btn btn-default" type="submit" name="del" value="No" />
     </div>
 </form>

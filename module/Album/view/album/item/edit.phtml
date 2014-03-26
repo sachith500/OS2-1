@@ -17,10 +17,20 @@ $form->setAttribute('action', $this->url(
 ));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formHidden($form->get('item_no'));
-echo 'item_no ' , $this->item_no , ' ';
-echo $this->formRow($form->get('name'));
-echo $this->formRow($form->get('description'));
-echo $this->formSubmit($form->get('submit'));
+echo $this->form()->openTag($form);?>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div><?php echo $this->formHidden($form->get('item_no')); ?></div>
+        <div><b><?php echo 'Item Number : ' , $this->item_no , ' '; ?></b></div>
+        <div><?php echo $this->formRow($form->get('name')); ?></div>
+        <div><?php echo $this->formRow($form->get('description')); ?></div>
+        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+        <div><?php  ?></div>
+    </div>
+</div>
+
+
+
+
+
 echo $this->form()->closeTag();

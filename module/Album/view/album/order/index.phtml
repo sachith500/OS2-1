@@ -30,10 +30,7 @@ $this->headTitle($title);
                     array('action'=>'edit', 'id' => $order->order_no));?>"><input type="button"
                                                                                   class="btn btn-xs btn-default"
                                                                                   value="Edit"></a>
-                <a href="<?php echo $this->url('order',
-                    array('action'=>'delete', 'id' => $order->order_no));?>"><input type="button"
-                                                                                    class="btn btn-xs btn-default"
-                                                                                    value="Delete"></a>
+
             </td>
         </tr>
     <?php endforeach; ?>
