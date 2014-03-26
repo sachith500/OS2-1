@@ -1,7 +1,7 @@
 <?php
 // module/Album/view/album/album/add.phtml:
 
-$title = 'Add new psr';
+$title = 'Add New Personal Representative';
 $this->headTitle($title);
 ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -10,11 +10,17 @@ $form = $this->form;
 $form->setAttribute('action', $this->url('psr', array('action' => 'add')));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('emp_id'));
-echo $this->formRow($form->get('name'));
-echo $this->formRow($form->get('po_box'));
-echo $this->formRow($form->get('street'));
-echo $this->formRow($form->get('city'));
-echo $this->formSubmit($form->get('submit'));
+echo $this->form()->openTag($form);?>
+
+<div ><?php echo $this->formRow($form->get('emp_id')); ?></div>
+<div><?php echo $this->formRow($form->get('name')); ?></div>
+<div><?php echo $this->formRow($form->get('po_box')); ?></div>
+<div><?php echo $this->formRow($form->get('street')); ?></div>
+<div><?php echo $this->formRow($form->get('city')); ?></div>
+<div ></div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+
+
+
+<?php
+
 echo $this->form()->closeTag();

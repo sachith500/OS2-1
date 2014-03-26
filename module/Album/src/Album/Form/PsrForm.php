@@ -14,15 +14,19 @@ class PsrForm extends Form
             'name' => 'emp_id',
             'attributes' => array(
                 'type'  => 'text',
+                'class'=>'form-control'
             ),
             'options' => array(
                 'label' => 'Employer ID',
+
+
             ),
         ));
         $this->add(array(
             'name' => 'name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'Name',
@@ -32,6 +36,7 @@ class PsrForm extends Form
             'name' => 'po_box',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'PO Box',
@@ -41,6 +46,7 @@ class PsrForm extends Form
             'name' => 'street',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'Street',
@@ -50,6 +56,7 @@ class PsrForm extends Form
             'name' => 'city',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'City',
@@ -61,6 +68,7 @@ class PsrForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class'=>'btn btn-default'
             ),
         ));
     }

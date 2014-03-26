@@ -50,6 +50,7 @@ class Business
                         ),
                     ),
                 ),
+
             )));
 
             $inputFilter->add($factory->createInput(array(

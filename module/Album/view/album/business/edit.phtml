@@ -18,11 +18,16 @@ $form->setAttribute('action', $this->url(
 $form->prepare();
 
 echo $this->form()->openTag($form);?>
-<?php echo '<b>Brn: </b>'.$this->brn."<br>"; ?>
 
-<?php echo $this->formHidden($form->get('brn')); ?>
-<?php echo $this->formRow($form->get('name')); ?>
-<div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <?php echo '<b>Brn: </b>'.$this->brn."<br>"; ?>
+        <div> <?php echo $this->formHidden($form->get('brn')); ?>  </div>
+        <div>  <?php echo $this->formRow($form->get('name')); ?> </div>
+        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+    </div>
+</div>
+
 <?php echo $this->form()->closeTag();?>
 
 <br>
@@ -36,7 +41,7 @@ echo $this->form()->openTag($form);?>
         <form method="post">
             <input type="hidden" name="selectedNum" value="<?php echo $this->escapeHtml($contact->contact_no);?>">
             <input type="hidden" name="clickedDel" value="YES">
-            <input type="submit" value = "delete">
+            <input class="btn btn-danger btn-xs" type="submit" value = "delete">
         </form>
     </td>
 
@@ -44,7 +49,7 @@ echo $this->form()->openTag($form);?>
 <?php endforeach; ?>
     <tr><td>
             <form method="post">
-                <input type="text" name="contact">
+                <input class="form-control" type="text" name="contact">
         </td><td>
                 <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value = "Save">
             </form>

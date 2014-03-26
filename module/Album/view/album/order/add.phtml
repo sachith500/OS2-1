@@ -1,20 +1,26 @@
 <?php
 // module/Album/view/album/album/add.phtml:
 
-$title = 'Add new order';
+$title = 'Create New Order';
 $this->headTitle($title);
 ?>
-    <h1><?php echo $this->escapeHtml($title); ?></h1>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
 <?php
 $form = $this->form;
 $form->setAttribute('action', $this->url('order', array('action' => 'add')));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('order_no'));
-echo $this->formRow($form->get('order_type'));
-echo $this->formRow($form->get('date'));
-echo $this->formRow($form->get('id'));
-echo $this->formRow($form->get('cid'));
-echo $this->formSubmit($form->get('submit'));
+echo $this->form()->openTag($form);?>
+<div class="panel panel-primary ">
+
+    <div class="panel-body">
+    <div><?php echo $this->formRow($form->get('order_no')); ?></div>
+    <div><?php echo $this->formRow($form->get('order_type')); ?></div>
+    <div><?php echo $this->formRow($form->get('date')); ?></div>
+    <div><?php echo $this->formRow($form->get('id')); ?></div>
+    <div><?php echo $this->formRow($form->get('cid')); ?></div>
+    <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+
+    </div></div>
+<?php
 echo $this->form()->closeTag();

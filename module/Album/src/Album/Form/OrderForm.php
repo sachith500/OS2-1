@@ -14,6 +14,7 @@ class OrderForm extends Form
             'name' => 'order_no',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'Order Number',
@@ -25,6 +26,7 @@ class OrderForm extends Form
             'name' => 'order_type',
             'attributes' => array(
                 'id' => 'order_type',
+                'class'=>'form-control'
             ),
             'options' => array(
                 'label' => 'Order Type',
@@ -39,6 +41,7 @@ class OrderForm extends Form
             'name' => 'date',
             'attributes' => array(
                 'type'  => 'date',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'Date',
@@ -48,6 +51,7 @@ class OrderForm extends Form
             'name' => 'id',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'ID',
@@ -57,6 +61,7 @@ class OrderForm extends Form
             'name' => 'cid',
             'attributes' => array(
                 'type'  => 'text',
+                'class' => 'form-control'
             ),
             'options' => array(
                 'label' => 'CID',
@@ -68,6 +73,7 @@ class OrderForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class'=>'btn btn-default'
             ),
         ));
     }

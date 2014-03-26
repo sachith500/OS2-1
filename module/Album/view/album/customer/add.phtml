@@ -1,7 +1,7 @@
 <?php
 // module/Album/view/album/album/add.phtml:
 
-$title = 'Add new customer';
+$title = 'Add New Customer';
 $this->headTitle($title);
 ?>
     <h1><?php echo $this->escapeHtml($title); ?></h1>
@@ -11,23 +11,30 @@ $form->setAttribute('action', $this->url('customer', array('action' => 'add')));
 $form->prepare();
 
 echo $this->form()->openTag($form);
-echo $this->formRow($form->get('CID'));
-echo $this->formRow($form->get('customer_type'));
-echo $this->formRow($form->get('first_name'));
-echo $this->formRow($form->get('middle_name'));
-echo $this->formRow($form->get('last_name'));
-echo $this->formRow($form->get('po_box'));
-echo $this->formRow($form->get('street'));
-echo $this->formRow($form->get('city'));
-echo $this->formRow($form->get('id'));
-echo $this->formRow($form->get('brn'));
-echo $this->formRow($form->get('trn'));
-echo $this->formRow($form->get('email'));
-echo $this->formRow($form->get('credit_limit'));
-echo $this->formRow($form->get('credit_balance'));
-echo $this->formRow($form->get('emp_id'));
-echo $this->formSubmit($form->get('submit'));
+?>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div><?php echo $this->formRow($form->get('CID')); ?></div>
+        <div><?php echo $this->formRow($form->get('customer_type')); ?></div>
+        <div><?php echo $this->formRow($form->get('first_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('middle_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('last_name')); ?></div>
+        <div><?php echo $this->formRow($form->get('po_box')); ?></div>
+        <div><?php echo $this->formRow($form->get('street')); ?></div>
+        <div><?php echo $this->formRow($form->get('city')); ?></div>
+        <div><?php echo $this->formRow($form->get('id')); ?></div>
+        <div><?php echo $this->formRow($form->get('brn')); ?></div>
+        <div><?php echo $this->formRow($form->get('trn')); ?></div>
+        <div><?php echo $this->formRow($form->get('email')); ?></div>
+        <div><?php echo $this->formRow($form->get('credit_limit')); ?></div>
+        <div><?php echo $this->formRow($form->get('credit_balance')); ?></div>
+        <div><?php echo $this->formRow($form->get('emp_id')); ?></div>
+        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+    </div>
+</div>
 
+
+<?php
 //Start JS
 //Inline script for the customer_type select element
 

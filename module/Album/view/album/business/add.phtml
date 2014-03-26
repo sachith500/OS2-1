@@ -8,20 +8,28 @@ $this->headTitle($title);
 <body>
 <div class="container">
 
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url(
-    'business',
-     array(
-         'action' => 'add'
-     )
-));
-$form->prepare();
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'business',
+        array(
+            'action' => 'add'
+        )
+    ));
+    $form->prepare();
 
-    echo $this->form()->openTag($form);
-    echo $this->formRow($form->get('brn'));
-    echo $this->formRow($form->get('name'));
-    echo $this->formSubmit($form->get('submit'));
-    echo $this->form()->closeTag(); ?>
+    echo $this->form()->openTag($form);?>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div><?php echo $this->formRow($form->get('brn')); ?></div>
+            <div> <?php echo $this->formRow($form->get('name')); ?></div>
+            <div> <?php echo $this->formSubmit($form->get('submit')); ?></div>
+        </div>
+    </div>
+
+
+
+
+    <?php echo $this->form()->closeTag(); ?>
 </div>
 </body>

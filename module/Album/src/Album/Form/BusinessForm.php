@@ -17,6 +17,7 @@ class BusinessForm extends Form
             'name' => 'brn',
             'attributes' => array(
                 'type' => 'text',
+                'class'=>'form-control'
             ),
             'options' => array(
                 'label' => 'Business Registration No',
@@ -26,6 +27,7 @@ class BusinessForm extends Form
             'name' => 'name',
             'attributes' => array(
                 'type' => 'text',
+                'class'=>'form-control'
             ),
             'options' => array(
                 'label' => 'Name',
@@ -37,6 +39,7 @@ class BusinessForm extends Form
                 'type' => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class'=>'btn btn-default'
             ),
         ));
     }

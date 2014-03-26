@@ -14,6 +14,7 @@ class CustomerForm extends Form
             'name' => 'CID',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control'
             ),
             'options' => array(
                 'label' => 'Customer ID',
@@ -25,7 +26,9 @@ class CustomerForm extends Form
             'name' => 'customer_type',
             'attributes' => array(
                 'id' => 'customer_type',
+                'class' =>'form-control',
             ),
+
             'options' => array(
             'label' => 'Customer Type',
             'value_options' => array(
@@ -33,6 +36,7 @@ class CustomerForm extends Form
                 '1' => 'Mail Order',
                 '2' => 'VIP',
                 ),
+
             )
         ));
 
@@ -40,6 +44,7 @@ class CustomerForm extends Form
             'name' => 'first_name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'First Name',
@@ -50,6 +55,7 @@ class CustomerForm extends Form
             'name' => 'middle_name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Middle Name',
@@ -60,6 +66,7 @@ class CustomerForm extends Form
             'name' => 'last_name',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Last Name',
@@ -70,6 +77,7 @@ class CustomerForm extends Form
             'name' => 'po_box',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'PO Box',
@@ -80,6 +88,7 @@ class CustomerForm extends Form
             'name' => 'street',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'Street',
@@ -90,6 +99,7 @@ class CustomerForm extends Form
             'name' => 'city',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
             ),
             'options' => array(
                 'label' => 'City',
@@ -102,6 +112,7 @@ class CustomerForm extends Form
                 'type'  => 'submit',
                 'value' => 'Go',
                 'id' => 'submitbutton',
+                'class' =>'btn btn-default  ',
             ),
         ));
 
@@ -109,11 +120,13 @@ class CustomerForm extends Form
             'name' => 'id',
             'attributes' => array(
                 'type'  => 'text',
+                'class' =>'form-control',
                 //'class' => 'largeorder'
             ),
             'options' => array(
                 'label' => 'ID',
                 'label_attributes' => array(
+                    
                     //'class'  => 'largeorder'
                 ),
             ),
