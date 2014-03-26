@@ -45,6 +45,24 @@ class OrderForm extends Form
             ),
         ));
         $this->add(array(
+            'name' => 'id',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'ID',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'cid',
+            'attributes' => array(
+                'type'  => 'text',
+            ),
+            'options' => array(
+                'label' => 'CID',
+            ),
+        ));
+        $this->add(array(
             'name' => 'submit',
             'attributes' => array(
                 'type'  => 'submit',
