@@ -39,6 +39,17 @@ class CustomerController extends AbstractActionController
                 switch ($selection){
                     case 0:
                         //large order
+                        $testCon->runSql(
+                            'insert into '
+                            . 'l_o_customers '
+                            . 'values ('
+                            . $form->get('id')->getValue()              . ','
+                            . $form->get('CID')->getValue()             . ','
+                            . $form->get('credit_limit')->getValue()    . ','
+                            . $form->get('credit_balance')->getValue()  . ','
+                            . $form->get('brn')->getValue()             . ','
+                            . $form->get('emp_id')->getValue()
+                            . ')',$sm);
                         break;
                     case 1:
                         //mail order
