@@ -4,40 +4,46 @@
 $title = 'Registered Items';
 $this->headTitle($title);
 ?>
-<div class="row">
-    <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
+<html>
+<body>
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
+    <div class="row">
+        <div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"><h1><?php echo $this->escapeHtml($title); ?></h1></div>
 
 
-    <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
-        <h1>
-            <a href="<?php echo $this->url('item', array('action' => 'add')); ?>"><input type="button"
-                                                                                         class="btn btn-primary btn-lg pull-right btn-block"
-                                                                                         value="Add New"></a></h1>
+        <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3">
+            <h1>
+                <a href="<?php echo $this->url('item', array('action' => 'add')); ?>"><input type="button"
+                                                                                             class="btn btn-primary btn-lg pull-right btn-block"
+                                                                                             value="Add New"></a></h1>
+        </div>
     </div>
-</div>
 
-<table class="table table-striped">
-    <tr>
-        <th>Item Number</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>&nbsp;</th>
-    </tr>
-    <?php foreach ($items as $item) : ?>
+    <table class="table table-striped">
         <tr>
-            <td><?php echo $this->escapeHtml($item->item_no); ?></td>
-            <td><?php echo $this->escapeHtml($item->name); ?></td>
-            <td><?php echo $this->escapeHtml($item->description); ?></td>
-            <td class="text-right">
-                <a href="<?php echo $this->url('item',
-                    array('action' => 'edit', 'id' => $item->item_no));?>"><input type="button"
-                                                                                  class="btn btn-xs btn-default"
-                                                                                  value="Edit"></a>
-                <a href="<?php echo $this->url('item',
-                    array('action' => 'delete', 'id' => $item->item_no));?>"><input type="button"
-                                                                                    class="btn btn-xs btn-default"
-                                                                                    value="Delete"></a>
-            </td>
+            <th>Item Number</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
         </tr>
-    <?php endforeach; ?>
-</table>
+        <?php foreach ($items as $item) : ?>
+            <tr>
+                <td><?php echo $this->escapeHtml($item->item_no); ?></td>
+                <td><?php echo $this->escapeHtml($item->name); ?></td>
+                <td><?php echo $this->escapeHtml($item->description); ?></td>
+                <td class="text-right">
+                    <a href="<?php echo $this->url('item',
+                        array('action' => 'edit', 'id' => $item->item_no));?>"><input type="button"
+                                                                                      class="btn btn-xs btn-default"
+                                                                                      value="Edit"></a>
+                    <a href="<?php echo $this->url('item',
+                        array('action' => 'delete', 'id' => $item->item_no));?>"><input type="button"
+                                                                                        class="btn btn-xs btn-default"
+                                                                                        value="Delete"></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
+</body>
+</html>

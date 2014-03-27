@@ -54,7 +54,7 @@ class CustomerController extends AbstractActionController
                     case 1:
                         //mail order
                         $testCon->runSql(
-                              'insert into '
+                            'insert into '
                             . 'mo_customers '
                             . 'values ('
                             . $form->get('id')->getValue()    . ','
@@ -89,7 +89,6 @@ class CustomerController extends AbstractActionController
     public function editAction()
     {
         $id = (int) $this->params()->fromRoute('id', 0);
-        echo $id;
 
         if (!$id) {
             echo '!ID';
@@ -102,11 +101,30 @@ class CustomerController extends AbstractActionController
         $form  = new CustomerForm();
         $form->bind($customer);
         $form->get('submit')->setAttribute('value', 'Edit');
+        $sm = $this->getServiceLocator();
+        $testController = new TestController();
+        $cid = $form->get('CID')->getValue();
+        $query0 = 'select * from l_o_customers where cid = '. $cid;
+        $resultSet0 = $testController->runSql($query0, $sm);
+        $nlo= $resultSet0->count();
+        $query1 = 'select cid from mo_customers where cid = '. $cid;
+        $resultSet1 = $testController->runSql($query1, $sm);
+        $nmo= $resultSet1->count();
+        $query2 = 'select cid from vip_customers where cid = '. $cid;
+        $resultSet2 = $testController->runSql($query2, $sm);
+        $nvo= $resultSet2->count();
 
+        $selection = 0;
+        if ($nlo == 1)$selection = 0;
+        if ($nmo == 1)$selection = 1;
+        if ($nvo == 1)$selection = 2;
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setInputFilter($customer->getInputFilter());
             $form->setData($request->getPost());
+
+
+
 
             if ($form->isValid()) {
                 $this->getCustomerTable()->saveCustomer($form->getData());
@@ -116,7 +134,7 @@ class CustomerController extends AbstractActionController
             }
         }
 
-        $testController = new TestController();
+
 
         if($_POST["saveClicked"] == 'Save'){
             $stash = $testController->runSql('INSERT INTO customer_contacts VALUES('.$id.','.$_POST["contact"].')', $this->getServiceLocator());
@@ -127,6 +145,37 @@ class CustomerController extends AbstractActionController
         if($_POST["clickedDel"] == 'YES'){
             $stash = $testController->runSql('DELETE FROM customer_contacts WHERE( contact_no='.$_POST["selectedNum"].')', $this->getServiceLocator());
         }
+        if ($selection == 0)
+            foreach ($resultSet0 as $row){// only one anyway
+                $form->get('credit_limit')->setValue($row->credit_limit);
+                $form->get('id')->setValue($row->id);
+                $form->get('credit_balance')->setValue($row->credit_balance);
+                $form->setAttribute('trn','NONE');
+                $form->setAttribute('email','NONE');
+                $form->get('brn')->setValue($row->brn);
+                $form->get('emp_id')->setValue($row->emp_id);
+            }
+        if ($selection == 1)
+            foreach ($resultSet0 as $row){// only one anyway
+                $form->setAttribute('credit_limit','NONE');
+                $form->get('id')->setValue($row->id);
+                $form->setAttribute('credit_balance','NONE');
+                $form->setAttribute('email','NONE');
+                $form->get('trn')->setValue($row->trn);
+                $form->get('email')->setValue($row->email);
+                $form->setAttribute('emp_id','NONE');
+            }
+        if ($selection == 2)
+            foreach ($resultSet0 as $row){// only one anyway
+                $form->get('credit_limit')->setValue($row->credit_limit);
+                $form->get('id')->setValue($row->id);
+                $form->get('credit_balance')->setValue($row->credit_balance);
+                $form->setAttribute('brn','NONE');
+                $form->get('trn')->setValue($row->trn);
+                $form->setAttribute('email','NONE');
+                $form->setAttribute('emp_id','NONE');
+            }
+
 
         return array(
             'CID' => $id,

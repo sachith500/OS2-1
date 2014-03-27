@@ -4,20 +4,26 @@
 $title = 'Delete item';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<html>
+<body>
+<div class="container col-lg-10 col-md-10 col-lg-pull-1 col-md-push-2">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<p>Are you sure that you want to delete
-       <b>'<?php echo $this->escapeHtml($item->name); ?>'</b>?
-</p>
-<?php
-$url = $this->url('item', array(
-    'action' => 'delete',
-    'id'     => $this->item_no,
-));
-?>
-<form action="<?php echo $url; ?>" method="post">
-    <div>
-        <input class="btn btn-danger" type="submit" name="del" value="Yes" />
-        <input class="btn btn-default" type="submit" name="del" value="No" />
-    </div>
-</form>
+    <p>Are you sure that you want to delete
+        <b>'<?php echo $this->escapeHtml($item->name); ?>'</b>?
+    </p>
+    <?php
+    $url = $this->url('item', array(
+        'action' => 'delete',
+        'id'     => $this->item_no,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+            <input class="btn btn-default" type="submit" name="del" value="No" />
+        </div>
+    </form>
+</div>
+</body>
+</html>

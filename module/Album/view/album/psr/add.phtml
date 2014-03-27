@@ -4,23 +4,30 @@
 $title = 'Add New Personal Representative';
 $this->headTitle($title);
 ?>
+<html>
+<body>
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
     <h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url('psr', array('action' => 'add')));
-$form->prepare();
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url('psr', array('action' => 'add')));
+    $form->prepare();
 
-echo $this->form()->openTag($form);?>
-<div class="panel panel-primary">
-    <div class="panel-body">
-        <div ><?php echo $this->formRow($form->get('emp_id')); ?></div>
-        <div><?php echo $this->formRow($form->get('name')); ?></div>
-        <div><?php echo $this->formRow($form->get('po_box')); ?></div>
-        <div><?php echo $this->formRow($form->get('street')); ?></div>
-        <div><?php echo $this->formRow($form->get('city')); ?></div>
-        <?php echo $this->formSubmit($form->get('submit')); ?></div>
+    echo $this->form()->openTag($form);?>
+    <div class="panel panel-primary col-lg-6 col-md-6 col-lg-push-3 col-md-push-3">
+        <div class="panel-body">
+            <div ><?php echo $this->formRow($form->get('emp_id')); ?></div>
+            <div><?php echo $this->formRow($form->get('name')); ?></div>
+            <div><?php echo $this->formRow($form->get('po_box')); ?></div>
+            <div><?php echo $this->formRow($form->get('street')); ?></div>
+            <div><?php echo $this->formRow($form->get('city')); ?></div>
+            <?php echo $this->formSubmit($form->get('submit')); ?></div>
     </div>
 </div>
+
+</div>
+</body>
+</html>
 
 
 

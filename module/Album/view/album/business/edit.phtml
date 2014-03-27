@@ -4,56 +4,65 @@
 $title = 'Edit business';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url(
-    'business',
-    array(
-        'action' => 'edit',
-        'id' => $this->brn,
-    )
-));
-$form->prepare();
+<div class="container col-lg-10 col-md-10 col-md-push-1 col-lg-push-1">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-echo $this->form()->openTag($form);?>
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'business',
+        array(
+            'action' => 'edit',
+            'id' => $this->brn,
+        )
+    ));
+    $form->prepare();
 
-<div class="panel panel-primary">
-    <div class="panel-body">
-        <?php echo '<b>Brn: </b>'.$this->brn."<br>"; ?>
-        <div> <?php echo $this->formHidden($form->get('brn')); ?>  </div>
-        <div>  <?php echo $this->formRow($form->get('name')); ?> </div>
-        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+    echo $this->form()->openTag($form);?>
+
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <?php echo '<b>Brn: </b>' . $this->brn . "<br>"; ?>
+            <div> <?php echo $this->formHidden($form->get('brn')); ?>  </div>
+            <div>  <?php echo $this->formRow($form->get('name')); ?> </div>
+            <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+        </div>
     </div>
+
+    <?php echo $this->form()->closeTag(); ?>
+
+    <br>
+    <table class="table table-striped">
+        <tr>
+            <th>Contact Numbers</th>
+            <td></td>
+        </tr>
+        <?php foreach ($contacts as $contact) : ?>
+
+            <tr>
+                <td><?php echo $this->escapeHtml($contact->contact_no); ?></td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="selectedNum"
+                               value="<?php echo $this->escapeHtml($contact->contact_no); ?>">
+                        <input type="hidden" name="clickedDel" value="YES">
+                        <input class="btn btn-danger btn-xs" type="submit" value="delete">
+                    </form>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+        <tr>
+            <td>
+                <form method="post">
+                    <input class="form-control" type="text" name="contact">
+            </td>
+            <td>
+                <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value="Save">
+                </form>
+            </td>
+        </tr>
+    </table>
+
 </div>
-
-<?php echo $this->form()->closeTag();?>
-
-<br>
-<table class="table table-striped">
-<tr><th>Contact Numbers</th><td></td></tr>
-<?php foreach ($contacts as $contact) : ?>
-
-    <tr>
-    <td><?php echo $this->escapeHtml($contact->contact_no); ?></td>
-    <td>
-        <form method="post">
-            <input type="hidden" name="selectedNum" value="<?php echo $this->escapeHtml($contact->contact_no);?>">
-            <input type="hidden" name="clickedDel" value="YES">
-            <input class="btn btn-danger btn-xs" type="submit" value = "delete">
-        </form>
-    </td>
-
-</tr>
-<?php endforeach; ?>
-    <tr><td>
-            <form method="post">
-                <input class="form-control" type="text" name="contact">
-        </td><td>
-                <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value = "Save">
-            </form>
-        </td>
-    </tr>
-</table>
-

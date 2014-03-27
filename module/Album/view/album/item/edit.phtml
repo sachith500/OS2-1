@@ -4,33 +4,81 @@
 $title = 'Edit Item';
 $this->headTitle($title);
 ?>
+<html>
+<body>
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
     <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<?php
-$form = $this->form;
-$form->setAttribute('action', $this->url(
-    'item',
-    array(
-        'action' => 'edit',
-        'id'     => $this->item_no,
-    )
-));
-$form->prepare();
+    <?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+        'item',
+        array(
+            'action' => 'edit',
+            'id'     => $this->item_no,
+        )
+    ));
+    $form->prepare();
 
-echo $this->form()->openTag($form);?>
-<div class="panel panel-primary">
-    <div class="panel-body">
-        <div><?php echo $this->formHidden($form->get('item_no')); ?></div>
-        <div><b><?php echo 'Item Number : ' , $this->item_no , ' '; ?></b></div>
-        <div><?php echo $this->formRow($form->get('name')); ?></div>
-        <div><?php echo $this->formRow($form->get('description')); ?></div>
-        <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
-        <div><?php  ?></div>
+    echo $this->form()->openTag($form);?>
+    <div class="panel panel-primary col-lg-6 col-md-6 col-lg-push-3 col-md-push-3">
+        <div class="panel-body">
+            <div><?php echo $this->formHidden($form->get('item_no')); ?></div>
+            <div><b><?php echo 'Item Number : ' , $this->item_no , ' '; ?></b></div>
+            <div><?php echo $this->formRow($form->get('name')); ?></div>
+            <div><?php echo $this->formRow($form->get('description')); ?></div>
+            <div><?php echo $this->formSubmit($form->get('submit')); ?></div>
+            <div><?php  ?></div>
+        </div>
     </div>
+    <?php echo $this->form()->closeTag();?>
+
+    <br>
+    <table class="table table-striped">
+        <tr>
+            <th>item prices</th>
+            <th>price start date</th>
+            <th>price end date</th>
+            <td></td>
+        </tr>
+        <?php foreach ($prices as $price) : ?>
+
+            <tr>
+                <td><?php echo $this->escapeHtml($price->price); ?></td>
+                <td><?php echo $this->escapeHtml($price->start_date); ?></td>
+                <td><?php echo $this->escapeHtml($price->end_date); ?></td>
+                <td>
+                    <form method="post">
+                        <input type="hidden" name="selectedNum"
+                               value="<?php echo $this->escapeHtml($price->price); ?>">
+
+                        <input type="hidden" name="clickedDel" value="YES">
+                    </form>
+                </td>
+
+            </tr>
+        <?php endforeach; ?>
+        <tr>
+            <td>
+                <form method="post">
+                    <input class="form-control" type="text" name="price">
+
+            </td>
+            <td>
+                End date<input type="date" name="endDate" >
+            </td>
+            <td>
+                <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value="Save">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+
+
 </div>
+</body>
+</html>
 
 
 
-
-
-echo $this->form()->closeTag();

@@ -4,21 +4,27 @@
 $title = 'Delete Personal Sales Representative';
 $this->headTitle($title);
 ?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
+<html>
+<body>
+<div class="container col-lg-10 col-md-10 col-lg-push-1 col-md-push-1">
+    <h1><?php echo $this->escapeHtml($title); ?></h1>
 
-<p>Are you sure that you want to delete
-    <b>'<?php echo $this->escapeHtml($psr->emp_id); ?>'</b> by
-    <b>'<?php echo $this->escapeHtml($psr->name); ?>'? </b>
-</p>
-<?php
-$url = $this->url('psr', array(
-    'action' => 'delete',
-    'id'     => $this->emp_id,
-));
-?>
-<form action="<?php echo $url; ?>" method="post">
-    <div>
-        <input class="btn btn-danger" type="submit" name="del" value="Yes" />
-        <input class="btn btn-default" type="submit" name="del" value="No" />
-    </div>
-</form>
+    <p>Are you sure that you want to delete
+        <b>'<?php echo $this->escapeHtml($psr->emp_id); ?>'</b> by
+        <b>'<?php echo $this->escapeHtml($psr->name); ?>'? </b>
+    </p>
+    <?php
+    $url = $this->url('psr', array(
+        'action' => 'delete',
+        'id'     => $this->emp_id,
+    ));
+    ?>
+    <form action="<?php echo $url; ?>" method="post">
+        <div>
+            <input class="btn btn-danger" type="submit" name="del" value="Yes" />
+            <input class="btn btn-default" type="submit" name="del" value="No" />
+        </div>
+    </form>
+</div>
+</body>
+</html>
