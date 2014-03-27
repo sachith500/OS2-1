@@ -49,7 +49,7 @@ class CustomerController extends AbstractActionController
                             . $form->get('credit_balance')->getValue()  . '","'
                             . $form->get('brn')->getValue()             . '","'
                             . $form->get('emp_id')->getValue()
-                            . ')',$sm);
+                            . '")',$sm);
                         break;
                     case 1:
                         //mail order
