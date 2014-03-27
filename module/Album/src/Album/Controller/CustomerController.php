@@ -107,10 +107,10 @@ class CustomerController extends AbstractActionController
         $query0 = 'select * from l_o_customers where cid = '. $cid;
         $resultSet0 = $testController->runSql($query0, $sm);
         $nlo= $resultSet0->count();
-        $query1 = 'select cid from mo_customers where cid = '. $cid;
+        $query1 = 'select * from mo_customers where cid = '. $cid;
         $resultSet1 = $testController->runSql($query1, $sm);
         $nmo= $resultSet1->count();
-        $query2 = 'select cid from vip_customers where cid = '. $cid;
+        $query2 = 'select * from vip_customers where cid = '. $cid;
         $resultSet2 = $testController->runSql($query2, $sm);
         $nvo= $resultSet2->count();
 
@@ -118,6 +118,7 @@ class CustomerController extends AbstractActionController
         if ($nlo == 1)$selection = 0;
         if ($nmo == 1)$selection = 1;
         if ($nvo == 1)$selection = 2;
+
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setInputFilter($customer->getInputFilter());
@@ -125,13 +126,29 @@ class CustomerController extends AbstractActionController
 
 
 
+            //if ($form->isValid()) {
+               //$this->getCustomerTable()->saveCustomer($form->getData());
 
-            if ($form->isValid()) {
-                $this->getCustomerTable()->saveCustomer($form->getData());
-
+                switch ($selection){
+                    case 0:
+                        //large order
+                        $testController->runSql(
+                            'update '
+                            . 'l_o_customers '
+                            . 'set '
+                            . 'id = ' .$form->get('id')->getValue()              . ', '
+                            . 'CID = ' .$form->get('CID')->getValue()             . ', '
+                            . 'credit_limit = ' .$form->get('credit_limit')->getValue()    . ', '
+                            . 'credit_balance = ' .$form->get('credit_balance')->getValue()  . ', '
+                            . 'brn = ' .$form->get('brn')->getValue()             . ', '
+                            . 'emp_id = ' .$form->get('emp_id')->getValue()
+                            .' where CID = ' . $form->get('CID')->getValue()
+                            ,$sm);
+                        break;
+                }
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('customer');
-            }
+            //}
         }
 
 
