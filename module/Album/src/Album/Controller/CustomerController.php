@@ -118,7 +118,6 @@ class CustomerController extends AbstractActionController
         if ($nlo == 1)$selection = 0;
         if ($nmo == 1)$selection = 1;
         if ($nvo == 1)$selection = 2;
-
         $request = $this->getRequest();
         if ($request->isPost()) {
             $form->setInputFilter($customer->getInputFilter());
@@ -210,17 +209,18 @@ class CustomerController extends AbstractActionController
                 $form->get('emp_id')->setValue($row->emp_id);
             }
         if ($selection == 1)
-            foreach ($resultSet0 as $row){// only one anyway
+            foreach ($resultSet1 as $row){// only one anyway
                 $form->setAttribute('credit_limit','NONE');
                 $form->get('id')->setValue($row->id);
                 $form->setAttribute('credit_balance','NONE');
                 $form->setAttribute('email','NONE');
                 $form->get('trn')->setValue($row->trn);
+                $form->setAttribute('brn','NONE');
                 $form->get('email')->setValue($row->email);
                 $form->setAttribute('emp_id','NONE');
             }
         if ($selection == 2)
-            foreach ($resultSet0 as $row){// only one anyway
+            foreach ($resultSet2 as $row){// only one anyway
                 $form->get('credit_limit')->setValue($row->credit_limit);
                 $form->get('id')->setValue($row->id);
                 $form->get('credit_balance')->setValue($row->credit_balance);
