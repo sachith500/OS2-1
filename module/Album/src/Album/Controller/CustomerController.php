@@ -127,7 +127,7 @@ class CustomerController extends AbstractActionController
 
 
             //if ($form->isValid()) {
-               //$this->getCustomerTable()->saveCustomer($form->getData());
+               $this->getCustomerTable()->saveCustomer($form->getData());
 
                 switch ($selection){
                     case 0:
