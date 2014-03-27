@@ -6,10 +6,12 @@ use Album\Model\Order;
 use Album\Form\OrderForm;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Album\Controller\TestController;
 
 class OrderController extends AbstractActionController
 {
     protected $orderTable;
+    protected $testController;
 
     public function indexAction()
     {
@@ -18,10 +20,53 @@ class OrderController extends AbstractActionController
         ));
     }
 
+    public function viewAction(){
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $testController = new TestController();
+        $sql = 'SELECT * from items';
+        $sql2 = 'SELECT * from items natural join item_orders where item_orders.order_no = '.$id;
+        $current = $testController->runSql($sql2, $this->getServiceLocator());
+        $items = $testController->runSql($sql, $this->getServiceLocator());
+
+        if($_POST["done"] == 'Done'){
+            return $this->redirect()->toRoute('order');
+        }
+
+        return array(
+            'id' => $id,
+            'items' => $items,
+            'current' => $testController->runSql($sql2, $this->getServiceLocator()),
+        );
+    }
+
+    public function itemsAction(){
+        $id = (int) $this->params()->fromRoute('id', 0);
+        $testController = new TestController();
+        $sql = 'SELECT * from items';
+        $sql2 = 'SELECT * from items natural join item_orders where item_orders.order_no = '.$id;
+        $current = $testController->runSql($sql2, $this->getServiceLocator());
+        $items = $testController->runSql($sql, $this->getServiceLocator());
+
+        if($_POST["saveClicked"] == 'Save'){
+            $stash = $testController->runSql('INSERT INTO item_orders (order_no, item_no, quantity) VALUES('.$id.','.$_POST["item"].','.$_POST["quantity"].')', $this->getServiceLocator());
+        }
+
+        if($_POST["done"] == 'Done'){
+            return $this->redirect()->toRoute('order');
+        }
+
+        return array(
+            'id' => $id,
+            'items' => $items,
+            'current' => $testController->runSql($sql2, $this->getServiceLocator()),
+        );
+    }
+
     public function addAction()
     {
+        $testController = new TestController();
         $form = new OrderForm();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue('Add Items');
         //echo 'submit button name changed to Add';
         $request = $this->getRequest();
         // echo 'getRequest()';
@@ -37,6 +82,9 @@ class OrderController extends AbstractActionController
                 $selection = $dropdown->getValue();
                 $sm = $this->getServiceLocator();
                 $testCon = new TestController();
+                $query1 = 'insert into orders values(';
+                $query1 .= $form->get('order_no')->getValue() . ',';
+                $query1 .= $form->get('date')->getValue().')';
                 $query = 'insert into ';
                 switch ($selection){
                     case 0:
@@ -50,15 +98,15 @@ class OrderController extends AbstractActionController
                         break;
                 }
                 $query .= 'values(';
-                $query .= $form->get('id')->getValue()       . ',';
                 $query .= $form->get('order_no')->getValue() . ',';
                 $query .= $form->get('cid')->getValue()      . ')';
+                $testCon->runSql($query1, $sm);
                 $testCon->runSql($query,$sm);
                 $order->exchangeArray($form->getData());
                 $this->getOrderTable()->saveOrder($order);
 
                 // Redirect to list of orders
-                return $this->redirect()->toRoute('order');
+                return $this->redirect()->toRoute('order', array('action' => 'items', 'id' => $order->order_no));
             }
         }
         //echo 'outside if';

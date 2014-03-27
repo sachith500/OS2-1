@@ -27,9 +27,9 @@ $this->headTitle($title);
             <td><?php echo $this->escapeHtml($order->date);?></td>
             <td class="text-right">
                 <a href="<?php echo $this->url('order',
-                    array('action'=>'edit', 'id' => $order->order_no));?>"><input type="button"
+                    array('action'=>'view', 'id' => $order->order_no));?>"><input type="button"
                                                                                   class="btn btn-xs btn-default"
-                                                                                  value="Edit"></a>
+                                                                                  value="View"></a>
 
             </td>
         </tr>

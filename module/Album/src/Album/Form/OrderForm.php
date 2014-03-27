@@ -48,16 +48,6 @@ class OrderForm extends Form
             ),
         ));
         $this->add(array(
-            'name' => 'id',
-            'attributes' => array(
-                'type'  => 'text',
-                'class' => 'form-control'
-            ),
-            'options' => array(
-                'label' => 'ID',
-            ),
-        ));
-        $this->add(array(
             'name' => 'cid',
             'attributes' => array(
                 'type'  => 'text',

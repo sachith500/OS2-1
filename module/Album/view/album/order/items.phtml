@@ -1,0 +1,43 @@
+<?php
+
+$title = 'Add Items';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<br>
+<table class="table table-striped">
+    <tr><th>Items</th><td></td></tr>
+    <?php foreach ($current as $item) : ?>
+
+        <tr>
+            <td><?php echo $this->escapeHtml($item->name); ?></td>
+            <td>
+                <?php echo $this->escapeHtml($item->quantity); ?>
+            </td>
+
+        </tr>
+    <?php endforeach; ?>
+    <tr><td>
+            <form method="post">
+                <select name="item">
+                    <?php foreach ($items as $item){ ?>
+                        <option value="<?php echo $this->escapeHtml($item->item_no); ?>">
+                            <?php echo $this->escapeHtml($item->name); ?>
+                        </option>
+                    <?php } ?>
+                </select>
+        </td>
+        <td>
+            <input type="number" name="quantity" value="0">
+        </td>
+        <td>
+            <input class="btn btn-primary btn-sm" type="submit" name="saveClicked" value = "Save">
+            </form>
+        </td>
+    </tr>
+</table>
+<form method="post">
+    <input class="btn btn-primary btn-sm" type="submit" name="done" value = "Done">
+</form>
