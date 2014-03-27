@@ -17,20 +17,15 @@ $this->headTitle($title);
         </div>
     </div>
     <table class="table table-striped">
-        <tr>
-            <th>order_no</th>
-            <th>date</th>
-            <th>&nbsp;</th>
-        </tr>
         <?php foreach ($orders as $order) : ?>
             <tr>
                 <td><?php echo $this->escapeHtml($order->order_no);?></td>
                 <td><?php echo $this->escapeHtml($order->date);?></td>
                 <td class="text-right">
                     <a href="<?php echo $this->url('order',
-                        array('action'=>'edit', 'id' => $order->order_no));?>"><input type="button"
+                        array('action'=>'view', 'id' => $order->order_no));?>"><input type="button"
                                                                                       class="btn btn-xs btn-default"
-                                                                                      value="Edit"></a>
+                                                                                      value="View"></a>
 
                 </td>
             </tr>
