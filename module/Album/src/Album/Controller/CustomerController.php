@@ -42,12 +42,12 @@ class CustomerController extends AbstractActionController
                         $testCon->runSql(
                             'insert into '
                             . 'l_o_customers '
-                            . 'values ('
-                            . $form->get('id')->getValue()              . ','
-                            . $form->get('CID')->getValue()             . ','
-                            . $form->get('credit_limit')->getValue()    . ','
-                            . $form->get('credit_balance')->getValue()  . ','
-                            . $form->get('brn')->getValue()             . ','
+                            . 'values ("'
+                            . $form->get('id')->getValue()              . '","'
+                            . $form->get('CID')->getValue()             . '","'
+                            . $form->get('credit_limit')->getValue()    . '","'
+                            . $form->get('credit_balance')->getValue()  . '","'
+                            . $form->get('brn')->getValue()             . '","'
                             . $form->get('emp_id')->getValue()
                             . ')',$sm);
                         break;
@@ -56,25 +56,25 @@ class CustomerController extends AbstractActionController
                         $testCon->runSql(
                             'insert into '
                             . 'mo_customers '
-                            . 'values ('
-                            . $form->get('id')->getValue()    . ','
-                            . $form->get('CID')->getValue()   . ','
-                            . $form->get('email')->getValue() . ','
+                            . 'values ("'
+                            . $form->get('id')->getValue()    . '","'
+                            . $form->get('CID')->getValue()   . '","'
+                            . $form->get('email')->getValue() . '","'
                             . $form->get('trn')->getValue()
-                            . ')',$sm);
+                            . '")',$sm);
                         break;
                     case 2:
                         //vip
                         $testCon->runSql(
                             'insert into '
                             . 'vip_customers '
-                            . 'values ('
-                            . $form->get('id')->getValue()              . ','
-                            . $form->get('CID')->getValue()             . ','
-                            . $form->get('credit_limit')->getValue()    . ','
-                            . $form->get('credit_balance')->getValue()  . ','
+                            . 'values ("'
+                            . $form->get('id')->getValue()              . '","'
+                            . $form->get('CID')->getValue()             . '","'
+                            . $form->get('credit_limit')->getValue()    . '","'
+                            . $form->get('credit_balance')->getValue()  . '","'
                             . $form->get('trn')->getValue()
-                            . ')',$sm);
+                            . '")',$sm);
                         break;
                 }
 
@@ -153,6 +153,33 @@ class CustomerController extends AbstractActionController
                             . 'credit_balance = ' .$form->get('credit_balance')->getValue()  . ', '
                             . 'brn = ' .$form->get('brn')->getValue()             . ', '
                             . 'emp_id = ' .$form->get('emp_id')->getValue()
+                            .' where CID = ' . $form->get('CID')->getValue()
+                            ,$sm);
+                        break;
+                    case 1:
+                        //large order
+                        $testController->runSql(
+                            'update '
+                            . 'l_o_customers '
+                            . 'set '
+                            . 'id = ' .$form->get('id')->getValue()              . ', '
+                            . 'CID = ' .$form->get('CID')->getValue()             . ', '
+                            . 'email = ' .$form->get('email')->getValue()    . ', '
+                            . 'trn = ' .$form->get('trn')->getValue()
+                            .' where CID = ' . $form->get('CID')->getValue()
+                            ,$sm);
+                        break;
+                    case 2:
+                        //large order
+                        $testController->runSql(
+                            'update '
+                            . 'vip_customers '
+                            . 'set '
+                            . 'id = ' .$form->get('id')->getValue()              . ', '
+                            . 'CID = ' .$form->get('CID')->getValue()             . ', '
+                            . 'credit_limit = ' .$form->get('credit_limit')->getValue()    . ', '
+                            . 'credit_balance = ' .$form->get('credit_balance')->getValue()  . ', '
+                            . 'trn = ' .$form->get('trn')->getValue()
                             .' where CID = ' . $form->get('CID')->getValue()
                             ,$sm);
                         break;
