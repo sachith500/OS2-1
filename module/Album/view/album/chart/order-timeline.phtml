@@ -19,7 +19,19 @@ $this->headTitle($title);
         </div>
     </div>
 
-    <div class="col-lg-8 col-md-8 col-lg-push-2 col-md-push-2" id="my_div"></div>
+
+    <?php
+    use Album\Controller\Chart;
+
+    $chart = new Chart($type);
+
+    $chart->load($data, 'array');
+    $options = array('title' => 'Orders', 'is3D' => true, 'width' => 750, 'height' => 600);
+    echo $chart->draw('my_div', $options);
+    ?>
+
+
+    <div class="col-lg-8 col-md-8 col-lg-push-1 col-md-push-1" id="my_div"></div>
 </div>
 </body>
 </html>

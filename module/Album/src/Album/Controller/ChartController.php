@@ -102,6 +102,22 @@ class ChartController extends AbstractActionController
 
     public function orderTimelineAction()
     {
+        //Generates a line chart based on sales
+        $sm = $this->getServiceLocator();
+        $testCon = new TestController();
+        $query = 'select date,count(*) as count from orders group by date order by date;'; //sort to make it more meaningful
+        $resultSet = $testCon->runSql($query, $sm);
+
+
+        $data = array( );
+        foreach ($resultSet as $row){
+            array_push($data,array('Date' => $row->date , 'Sales' => (int)$row->count));
+        }
+        $type = "LineChart";
+        return array(
+            'type' => $type,
+            'data' => $data,
+        );
 
     }
 }
