@@ -128,14 +128,14 @@ class CustomerController extends AbstractActionController
                 'update '
                 . 'customers '
                 . 'set '
-                . 'first_name = ' .$form->get('first_name')->getValue()              . ', '
-                . 'middle_name = ' .$form->get('middle_name')->getValue()              . ', '
-                . 'last_name = ' .$form->get('last_name')->getValue()              . ', '
-                . 'street = ' .$form->get('street')->getValue()              . ', '
-                . 'city = ' .$form->get('city')->getValue()              . ', '
-                . 'CID = ' .$form->get('CID')->getValue()             . ', '
-                . 'po_box = ' .$form->get('po_box')->getValue()
-                .' where CID = ' . $form->get('CID')->getValue()
+                . 'first_name = "' .$form->get('first_name')->getValue()              . '", '
+                . 'middle_name = "' .$form->get('middle_name')->getValue()              . '", '
+                . 'last_name = "' .$form->get('last_name')->getValue()              . '", '
+                . 'street = "' .$form->get('street')->getValue()              . '", '
+                . 'city = "' .$form->get('city')->getValue()              . '", '
+                . 'CID = "' .$form->get('CID')->getValue()             . '", '
+                . 'po_box = "' .$form->get('po_box')->getValue()
+                .'" where CID = ' . $form->get('CID')->getValue()
                 ,$sm);
 
 
@@ -159,11 +159,11 @@ class CustomerController extends AbstractActionController
                         //large order
                         $testController->runSql(
                             'update '
-                            . 'l_o_customers '
+                            . 'mo_customers '
                             . 'set '
                             . 'id = ' .$form->get('id')->getValue()              . ', '
                             . 'CID = ' .$form->get('CID')->getValue()             . ', '
-                            . 'email = ' .$form->get('email')->getValue()    . ', '
+                            . 'email = "' .$form->get('email')->getValue()    . '", '
                             . 'trn = ' .$form->get('trn')->getValue()
                             .' where CID = ' . $form->get('CID')->getValue()
                             ,$sm);
@@ -213,7 +213,6 @@ class CustomerController extends AbstractActionController
                 $form->setAttribute('credit_limit','NONE');
                 $form->get('id')->setValue($row->id);
                 $form->setAttribute('credit_balance','NONE');
-                $form->setAttribute('email','NONE');
                 $form->get('trn')->setValue($row->trn);
                 $form->setAttribute('brn','NONE');
                 $form->get('email')->setValue($row->email);
@@ -223,9 +222,9 @@ class CustomerController extends AbstractActionController
             foreach ($resultSet2 as $row){// only one anyway
                 $form->get('credit_limit')->setValue($row->credit_limit);
                 $form->get('id')->setValue($row->id);
+                $form->get('trn')->setValue($row->TRN);
                 $form->get('credit_balance')->setValue($row->credit_balance);
                 $form->setAttribute('brn','NONE');
-                $form->get('trn')->setValue($row->trn);
                 $form->setAttribute('email','NONE');
                 $form->setAttribute('emp_id','NONE');
             }
