@@ -125,9 +125,20 @@ class CustomerController extends AbstractActionController
             $form->setData($request->getPost());
 
 
+            $testController->runSql(
+                'update '
+                . 'customers '
+                . 'set '
+                . 'first_name = ' .$form->get('first_name')->getValue()              . ', '
+                . 'middle_name = ' .$form->get('middle_name')->getValue()              . ', '
+                . 'last_name = ' .$form->get('last_name')->getValue()              . ', '
+                . 'street = ' .$form->get('street')->getValue()              . ', '
+                . 'city = ' .$form->get('city')->getValue()              . ', '
+                . 'CID = ' .$form->get('CID')->getValue()             . ', '
+                . 'po_box = ' .$form->get('po_box')->getValue()
+                .' where CID = ' . $form->get('CID')->getValue()
+                ,$sm);
 
-            //if ($form->isValid()) {
-               $this->getCustomerTable()->saveCustomer($form->getData());
 
                 switch ($selection){
                     case 0:
@@ -148,7 +159,6 @@ class CustomerController extends AbstractActionController
                 }
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('customer');
-            //}
         }
 
 
