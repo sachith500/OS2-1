@@ -79,10 +79,10 @@ class ItemController extends AbstractActionController
 
 
         $date = date("Y-m-d");
-        echo $date;
+        //echo $date;
         $date2 =  $_POST["endDate"];
-        echo $date2;
-        echo 'INSERT INTO item_prices VALUES('.$id.','.$date.','.$date2.','.$_POST["price"].')';
+        //echo $date2;
+        //echo 'INSERT INTO item_prices VALUES('.$id.','.$date.','.$date2.','.$_POST["price"].')';
         if($_POST["saveClicked"] == 'Save'){
             $stash = $testController->runSql('INSERT INTO item_prices VALUES('.$id.',"'.$date.'","'.$date2.'",'.$_POST["price"].')', $this->getServiceLocator());
         }
