@@ -18,11 +18,20 @@ $this->headTitle($title);
         </div>
     </div>
     <hr>
-    <select name="item">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">2</option>
-    </select>
+
+    <form method="post">
+        <select name="item">
+            <?php foreach ($items as $item){ ?>
+                <option value="<?php echo $this->escapeHtml($item->item_no); ?>">
+                    <?php echo $this->escapeHtml($item->name); ?>
+                </option>
+            <?php } ?>
+        </select>
+        </td>
+
+        <td>
+            <input class="btn btn-primary btn-sm" type="submit" name="showClicked" value = "show">
+    </form>
 
     <?php
     use Album\Controller\Chart;
@@ -30,7 +39,7 @@ $this->headTitle($title);
     $chart = new Chart($type);
 
     $chart->load($data, 'array');
-    $options = array('title' => 'Orders', 'is3D' => true, 'width' => 750, 'height' => 600);
+    $options = array('title' => 'Price Variation of '.$_POST["item"], 'is3D' => true, 'width' => 750, 'height' => 600);
     echo $chart->draw('my_div', $options);
     ?>
 
